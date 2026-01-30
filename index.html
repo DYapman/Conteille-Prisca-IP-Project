@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Watch UI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <header class="app-header">
+            <button id="left-btn" class="icon-btn" aria-label="Menu">
+                <svg class="icon-hamburger" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                <svg class="icon-close" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="display:none;"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+
+            <div class="logo">
+                <div class="logo-circle">
+                    <span>G</span>
+                </div>
+            </div>
+
+            <button id="right-btn" class="icon-btn" aria-label="Account">
+                <svg class="icon-user" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <svg class="icon-close" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="display:none;"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+        </header>
+
+        <main id="home-view" class="view active">
+            
+            <section class="product-card">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=800&q=80" alt="Sea Mariner">
+                </div>
+                <div class="card-details">
+                    <h2 class="product-title">Sea Mariner</h2>
+                    <button class="cta-btn">Discover the Collection</button>
+                </div>
+            </section>
+
+            <section class="product-card">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80" alt="Novus Flux">
+                </div>
+                <div class="card-details">
+                    <h2 class="product-title">Novus Flux</h2>
+                    <button class="cta-btn">Discover the Collection</button>
+                </div>
+            </section>
+
+        </main>
+
+        <nav id="utility-view" class="view overlay">
+            <ul class="nav-list">
+                <li class="nav-item"><span>WATCHES</span> <span class="chevron">&rsaquo;</span></li>
+                <li class="nav-item"><span>ACCESSORIES</span> <span class="chevron">&rsaquo;</span></li>
+                <li class="nav-item"><span>MEMBERSHIP</span> <span class="chevron">&rsaquo;</span></li>
+                <li class="nav-item"><span>FORUM</span> <span class="chevron">&rsaquo;</span></li>
+                <li class="nav-item"><span>RESERVATIONS</span> <span class="chevron">&rsaquo;</span></li>
+                <li class="nav-item"><span>SETTINGS</span> <span class="chevron">&rsaquo;</span></li>
+                <li class="nav-item"><span>ABOUT US</span> <span class="chevron">&rsaquo;</span></li>
+            </ul>
+        </nav>
+
+        <nav id="account-view" class="view overlay">
+            <ul class="nav-list">
+                <li class="nav-item"><span>PROFILE</span> <span class="chevron">&rsaquo;</span></li>
+                <li class="nav-item"><span>SETTINGS</span> <span class="chevron">&rsaquo;</span></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
