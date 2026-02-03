@@ -4,73 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novus Flux</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app-container">
     <header>
-        <button id="menu-btn" class="nav-icon"><i class="fas fa-bars"></i></button>
-        <div class="logo"><a href="index.html"><img src="https://via.placeholder.com/50x50/1a1a1a/c5a059?text=GP" alt="Logo"></a></div>
-        <button id="account-btn" class="nav-icon"><i class="far fa-user"></i></button>
+        <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
+        <div class="logo-text" onclick="window.location.href='index.html'">GP</div>
+        <button id="user-btn" class="icon-btn"><i class="far fa-user"></i></button>
     </header>
 
-    <main>
-        <div class="video-placeholder"></div>
+    <main class="product-container">
         
-        <div class="product-info">
-            <h2>Novus Flux</h2>
-            <div class="price">SGD$16,700</div>
-            
-            <button class="btn-primary">Add to Cart</button>
-            
-            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-
-            <div class="accordion-item">
-                <button class="accordion-header">Description <span class="accordion-icon">+</span></button>
-                <div class="accordion-content"><p>Modern digital durability meets luxury design.</p></div>
-            </div>
-            <div class="accordion-item">
-                <button class="accordion-header">Features <span class="accordion-icon">+</span></button>
-                <div class="accordion-content"><p>Bluetooth connectivity, Solar power.</p></div>
-            </div>
-            <div class="accordion-item">
-                <button class="accordion-header">Technical Data <span class="accordion-icon">+</span></button>
-                <div class="accordion-content"><p>Module 3459, Titanium Housing.</p></div>
-            </div>
-            <div class="accordion-item">
-                <button class="accordion-header">Strap <span class="accordion-icon">+</span></button>
-                <div class="accordion-content"><p>Resin band with buckle.</p></div>
+        <div class="product-content-wrapper">
+            <div class="video-placeholder" style="height: auto; min-height: 400px; flex: 1;">
+                Novus Flux Video
             </div>
 
-            <div class="features-grid">
-                <div class="feature-box"><i class="far fa-compass"></i><span>Superior Precision</span></div>
-                <div class="feature-box"><i class="fas fa-shield-alt"></i><span>10-Year Warranty</span></div>
-                <div class="feature-box"><i class="fas fa-bolt"></i><span>Shock Resistance</span></div>
-                <div class="feature-box"><i class="fas fa-tint"></i><span>Water Resistance</span></div>
-            </div>
+            <div class="product-details-column">
+                <h1 class="product-title">Novus Flux</h1>
+                <p class="price">SGD$16,700</p>
+                <button class="btn-primary">Add to Cart</button>
 
-            <div class="tech-image">
-                <img src="https://via.placeholder.com/150/003300/FFFFFF?text=Circuit" alt="Circuit Board">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">Description <span>+</span></div>
+                        <div class="accordion-content">A masterpiece of modern engineering, blending digital precision with analog soul.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Features <span>+</span></div>
+                        <div class="accordion-content">Carbon Fiber Case, Skeleton Dial.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Technical Data <span>+</span></div>
+                        <div class="accordion-content">Automatic movement, 45mm case diameter.</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
 
-    <div id="utility-menu" class="overlay-menu">
-        <div class="menu-header">
-            <button class="nav-icon close-menu-btn"><i class="fas fa-times"></i></button>
-            <div class="logo">GP</div>
-            <button class="nav-icon"><i class="far fa-user"></i></button>
+        <div class="icon-grid">
+            <div class="feature-icon"><i class="far fa-clock"></i><p>Precision</p></div>
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i><p>Warranty</p></div>
+            <div class="feature-icon"><i class="fas fa-bolt"></i><p>Shock Resist</p></div>
+            <div class="feature-icon"><i class="fas fa-tint"></i><p>Waterproof</p></div>
+        </div>
+
+    </main>
+    
+    <div id="utility-menu" class="overlay">
+        <div class="overlay-header">
+            <button id="close-utility" class="icon-btn"><i class="fas fa-times"></i></button>
+            <div class="logo-text">GP</div>
+            <div style="width: 44px;"></div>
         </div>
         <ul class="menu-list">
-            <li><a href="index.html">Watches</a></li>
-            <li><a href="accessories.html">Accessories</a></li>
+            <li onclick="window.location.href='index.html'">Home <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='accessories.html'">Accessories <i class="fas fa-chevron-right"></i></li>
         </ul>
     </div>
-</div>
 
-<script src="script.js"></script>
+    <script src="../Javascript/script.js"></script>
 </body>
 </html>

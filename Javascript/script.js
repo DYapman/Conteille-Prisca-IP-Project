@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Menu Logic ---
+    // --- Select Elements ---
     const menuBtn = document.getElementById('menu-btn');
     const userBtn = document.getElementById('user-btn');
     const utilityMenu = document.getElementById('utility-menu');
@@ -8,34 +8,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeUtility = document.getElementById('close-utility');
     const closeAccount = document.getElementById('close-account');
 
-    // Open Left Menu
-    if(menuBtn) {
+    // --- Menu Functions ---
+    if(menuBtn && utilityMenu) {
         menuBtn.addEventListener('click', () => {
             utilityMenu.classList.add('active');
         });
     }
 
-    // Open Right Menu
-    if(userBtn) {
+    if(userBtn && accountMenu) {
         userBtn.addEventListener('click', () => {
             accountMenu.classList.add('active');
         });
     }
 
-    // Close Menus
-    if(closeUtility) {
+    if(closeUtility && utilityMenu) {
         closeUtility.addEventListener('click', () => {
             utilityMenu.classList.remove('active');
         });
     }
 
-    if(closeAccount) {
+    if(closeAccount && accountMenu) {
         closeAccount.addEventListener('click', () => {
             accountMenu.classList.remove('active');
         });
     }
 
-    // --- Accordion Logic (Product Pages) ---
+    // --- Accordion Functions ---
     const accHeaders = document.querySelectorAll('.accordion-header');
 
     accHeaders.forEach(header => {
@@ -43,13 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const content = header.nextElementSibling;
             const icon = header.querySelector('span');
             
-            // Toggle current
             if (content.style.display === "block") {
                 content.style.display = "none";
-                icon.textContent = "+";
+                if(icon) icon.textContent = "+";
             } else {
                 content.style.display = "block";
-                icon.textContent = "-";
+                if(icon) icon.textContent = "-";
             }
         });
     });

@@ -4,105 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sea Mariner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app-container">
     <header>
-        <button id="menu-btn" class="nav-icon"><i class="fas fa-bars"></i></button>
-        <div class="logo"><a href="index.html"><img src="https://via.placeholder.com/50x50/1a1a1a/c5a059?text=GP" alt="Logo"></a></div>
-        <button id="account-btn" class="nav-icon"><i class="far fa-user"></i></button>
+        <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
+        <div class="logo-text" onclick="window.location.href='index.html'">GP</div>
+        <button id="user-btn" class="icon-btn"><i class="far fa-user"></i></button>
     </header>
 
-    <main>
-        <div class="video-placeholder"></div>
+    <main class="product-container">
         
-        <div class="product-info">
-            <h2>Sea Mariner</h2>
-            <div class="price">SGD$19,700</div>
-            
-            <button class="btn-primary">Add to Cart</button>
-            
-            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    Description <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>The Sea Mariner is a testament to nautical engineering, designed for the depths and styled for the shore.</p>
-                </div>
+        <div class="product-content-wrapper">
+            <div class="video-placeholder" style="height: auto; min-height: 400px; flex: 1;">
+                Sea Mariner Video
             </div>
 
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    Features <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Ceramic bezel, luminous markers, and sapphire crystal glass.</p>
-                </div>
-            </div>
+            <div class="product-details-column">
+                <h1 class="product-title">Sea Mariner</h1>
+                <p class="price">SGD$19,700</p>
+                <button class="btn-primary">Add to Cart</button>
 
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    Technical Data <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Caliber 3235, 70h Power Reserve, 41mm Case.</p>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">Description <span>+</span></div>
+                        <div class="accordion-content">The Sea Mariner is the epitome of diving luxury. Designed for the deep, it features unrivaled water resistance.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Features <span>+</span></div>
+                        <div class="accordion-content">Ceramic Bezel, 300m Water Resistance, Sapphire Crystal.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Technical Data <span>+</span></div>
+                        <div class="accordion-content">Caliber 3235, 70hr Power Reserve.</div>
+                    </div>
                 </div>
             </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    Strap <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Oystersteel bracelet with folding clasp.</p>
-                </div>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-box">
-                    <i class="far fa-compass"></i>
-                    <span>Superior Precision</span>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>5-Year Warranty</span>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-bolt"></i>
-                    <span>Shock Resistance</span>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-tint"></i>
-                    <span>Water Resistance</span>
-                </div>
-            </div>
-
-            <div class="tech-image">
-                <img src="https://via.placeholder.com/150?text=Movement" alt="Watch Movement" style="border-radius: 50%;">
-            </div>
-            <div style="text-align: center; font-family:serif; font-style: italic;">NH35</div>
         </div>
-    </main>
 
-    <div id="utility-menu" class="overlay-menu">
-        <div class="menu-header">
-            <button class="nav-icon close-menu-btn"><i class="fas fa-times"></i></button>
-            <div class="logo">GP</div>
-            <button class="nav-icon"><i class="far fa-user"></i></button>
+        <div class="icon-grid">
+            <div class="feature-icon"><i class="far fa-clock"></i><p>Precision</p></div>
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i><p>Warranty</p></div>
+            <div class="feature-icon"><i class="fas fa-bolt"></i><p>Shock Resist</p></div>
+            <div class="feature-icon"><i class="fas fa-tint"></i><p>Waterproof</p></div>
+        </div>
+
+    </main>
+    
+    <div id="utility-menu" class="overlay">
+        <div class="overlay-header">
+            <button id="close-utility" class="icon-btn"><i class="fas fa-times"></i></button>
+            <div class="logo-text">GP</div>
+            <div style="width: 44px;"></div>
         </div>
         <ul class="menu-list">
-            <li><a href="index.html">Watches</a></li>
-            <li><a href="accessories.html">Accessories</a></li>
-            </ul>
+            <li onclick="window.location.href='index.html'">Home <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='accessories.html'">Accessories <i class="fas fa-chevron-right"></i></li>
+        </ul>
     </div>
-</div>
 
-<script src="script.js"></script>
+    <script src="../Javascript/script.js"></script>
 </body>
 </html>
