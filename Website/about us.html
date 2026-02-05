@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
+        <div class="logo-text" onclick="window.location.href='index.html'"></div>
+        <button id="cart-btn" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
+    </header>
+
+    <div class="page-container">
+        <div class="about-section">
+            <img src="https://via.placeholder.com/600x400?text=Founders" class="about-img" alt="Founders">
+            <h2 class="about-title">ORIGINS</h2>
+            <p class="about-text">The history of Conteille Prisca began in 1967 founded by two friends, Darryl Yap and Marcus Valdez. Their partnership was a natural fit, from design to watchmaking, their passions fully aligned regardless of race. One Indonesian and One Filipino, in the union of their respective skills, Conteille Prisca was born.</p>
+        </div>
+
+        <div class="about-section">
+            <img src="https://via.placeholder.com/600x400?text=Gold+Coin+Design" class="about-img" alt="Design">
+            <h2 class="about-title">DESIGN</h2>
+            <p class="about-text">The Siamese Fighting Fish was chosen as a logo to represent and idealize the vision Conteille Prisca has for watches: to embody "Defiant Elegance." It represents a unique duality: the resilient, territorial strength of a warrior paired with the fluid, ornamental beauty of a high-end timepiece.</p>
+        </div>
+
+        <div class="about-section">
+            <img src="https://via.placeholder.com/600x400?text=Blue+Watch+Face" class="about-img" alt="Iconic">
+            <h2 class="about-title">ICONIC SIGNATURE</h2>
+            <p class="about-text">The Sea Mariner, the first watch produced by Conteille Prisca, bridges the gap between a rugged tactical instrument and a work of fluid art. Engineered with the uncompromising utility of a classic "Sub" and the ornate, technical finishing of a "Seamaster," it features a 300m-rated case.</p>
+        </div>
+
+        <footer class="site-footer">
+            <label class="newsletter-label">Subscribe to our newsletter</label>
+            <div class="input-group"><input type="email" placeholder="Email" class="email-input"><button class="submit-btn"><i class="fas fa-chevron-right"></i></button></div>
+            <div class="footer-divider"></div>
+            <div class="social-icons"><i class="fab fa-instagram"></i><i class="fab fa-tiktok"></i><i class="fas fa-times"></i></div>
+        </footer>
+    </div>
+    
+    <div id="utility-menu" class="overlay">
+        <div class="overlay-header">
+            <button id="close-utility" class="icon-btn"><i class="fas fa-times"></i></button>
+            <div class="logo-text"></div>
+            <button id="open-cart-from-menu" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
+        </div>
+        <ul class="menu-list">
+            <li onclick="window.location.href='index.html'">Watches <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='accessories.html'">Accessories <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='community.html'">Community <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='about.html'">About Us <i class="fas fa-chevron-right"></i></li>
+        </ul>
+    </div>
+     <div id="cart-menu" class="overlay overlay-right">
+        <div class="overlay-header">
+            <button id="open-menu-from-cart" class="icon-btn"><i class="fas fa-bars"></i></button>
+            <div class="logo-text"></div>
+            <button id="close-cart" class="icon-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-content">
+            <div style="font-weight:bold; margin-bottom:20px;">YOUR CART (1)</div>
+            <div class="cart-item">
+                <img src="https://via.placeholder.com/100" alt="Watch">
+                <div>
+                    <div>Sea Mariner NATO</div>
+                    <div class="qty-selector"><button class="qty-btn">-</button><input class="qty-input" value="1"><button class="qty-btn">+</button></div>
+                    <div class="cart-price">$7,100.00</div>
+                </div>
+            </div>
+            <div class="delivery-box">Delivery within 48 hours</div>
+            <div class="cart-footer">
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <script src="../Javascript/script.js"></script>
+</body>
+</html>

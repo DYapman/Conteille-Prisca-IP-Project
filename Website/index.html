@@ -3,65 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Watches</title>
+    <title>Home</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
     <header>
         <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
-        <div class="logo-text" onclick="window.location.href='index.html'">GP</div>
-        <button id="user-btn" class="icon-btn"><i class="far fa-user"></i></button>
+        <div class="logo-text" onclick="window.location.href='index.html'"></div>
+        <button id="cart-btn" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
     </header>
 
-    <main class="homepage-container">
-        <div class="video-placeholder">
-            <i class="fas fa-play"></i> &nbsp; Brand Campaign Film
-        </div>
+    <div class="page-container">
+        <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80" alt="Bronze Watch" class="hero-image">
 
         <div class="collection-grid">
-            <div class="collection-item">
-                <img src="https://via.placeholder.com/500x350/1a2238/ffffff?text=Sea+Mariner" alt="Sea Mariner">
-                <div class="collection-info">
-                    <h2>Sea Mariner</h2>
-                    <a href="seamariner.html" class="btn-outline">Discover The Collection</a>
-                </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=600&q=80" alt="Sea Mariner">
+                <h2>Sea Mariner</h2>
+                <a href="seamariner.html" class="btn-outline">Discover The Collection</a>
             </div>
 
-            <div class="collection-item">
-                <img src="https://via.placeholder.com/500x350/333333/ffffff?text=Novus+Flux" alt="Novus Flux">
-                <div class="collection-info">
-                    <h2>Novus Flux</h2>
-                    <a href="novus-flux.html" class="btn-outline">Discover The Collection</a>
-                </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80" alt="Novus Flux">
+                <h2>Novus Flux</h2>
+                <a href="novus-flux.html" class="btn-outline">Discover The Collection</a>
             </div>
         </div>
-    </main>
+        
+        <footer class="site-footer">
+            <label class="newsletter-label">Subscribe to our newsletter</label>
+            <div class="input-group">
+                <input type="email" placeholder="Email" class="email-input">
+                <button class="submit-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="social-icons">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-tiktok"></i>
+                <i class="fas fa-times"></i> </div>
+        </footer>
+    </div>
 
     <div id="utility-menu" class="overlay">
         <div class="overlay-header">
             <button id="close-utility" class="icon-btn"><i class="fas fa-times"></i></button>
-            <div class="logo-text">GP</div>
-            <div style="width: 44px;"></div>
+            <div class="logo-text"></div>
+            <button id="open-cart-from-menu" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
         </div>
         <ul class="menu-list">
             <li onclick="window.location.href='index.html'">Watches <i class="fas fa-chevron-right"></i></li>
             <li onclick="window.location.href='accessories.html'">Accessories <i class="fas fa-chevron-right"></i></li>
-            <li>Membership <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='community.html'">Community <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='about.html'">About Us <i class="fas fa-chevron-right"></i></li>
         </ul>
     </div>
 
-    <div id="account-menu" class="overlay overlay-right">
+    <div id="cart-menu" class="overlay overlay-right">
         <div class="overlay-header">
-            <div style="width: 44px;"></div>
-            <div class="logo-text">GP</div>
-            <button id="close-account" class="icon-btn"><i class="fas fa-times"></i></button>
+            <button id="open-menu-from-cart" class="icon-btn"><i class="fas fa-bars"></i></button>
+            <div class="logo-text"></div>
+            <button id="close-cart" class="icon-btn"><i class="fas fa-times"></i></button>
         </div>
-        <ul class="menu-list">
-            <li>Profile <i class="fas fa-chevron-right"></i></li>
-            <li>Settings <i class="fas fa-chevron-right"></i></li>
-        </ul>
+        <div class="cart-content">
+            <div style="font-weight:bold; margin-bottom:20px;">YOUR CART (1)</div>
+            <div class="cart-item">
+                <img src="https://via.placeholder.com/100" alt="Watch">
+                <div>
+                    <div>Sea Mariner NATO</div>
+                    <div class="qty-selector"><button class="qty-btn">-</button><input class="qty-input" value="1"><button class="qty-btn">+</button></div>
+                    <div class="cart-price">$7,100.00</div>
+                </div>
+            </div>
+            <div class="delivery-box">Delivery within 48 hours</div>
+            <div class="cart-footer">
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
     </div>
 
     <script src="../Javascript/script.js"></script>

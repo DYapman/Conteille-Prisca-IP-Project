@@ -8,61 +8,93 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
     <header>
         <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
-        <div class="logo-text" onclick="window.location.href='index.html'">GP</div>
-        <button id="user-btn" class="icon-btn"><i class="far fa-user"></i></button>
+        <div class="logo-text" onclick="window.location.href='index.html'"></div>
+        <button id="cart-btn" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
     </header>
 
-    <main class="product-container">
-        
+    <div class="page-container">
         <div class="product-content-wrapper">
-            <div class="video-placeholder" style="height: auto; min-height: 400px; flex: 1;">
-                Sea Mariner Video
+            <div class="product-images">
+                <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=600&q=80" alt="Sea Mariner">
             </div>
-
-            <div class="product-details-column">
-                <h1 class="product-title">Sea Mariner</h1>
-                <p class="price">SGD$19,700</p>
-                <button class="btn-primary">Add to Cart</button>
+            
+            <div class="product-info">
+                <div class="product-header">
+                    <h1 class="product-title">Sea Mariner</h1>
+                    <p class="price">SGD$19,700</p>
+                    <button class="btn-primary">Add to Cart</button>
+                    <div class="origin-divider">Made In Singapore</div>
+                </div>
 
                 <div class="accordion">
-                    <div class="accordion-item">
-                        <div class="accordion-header">Description <span>+</span></div>
-                        <div class="accordion-content">The Sea Mariner is the epitome of diving luxury. Designed for the deep, it features unrivaled water resistance.</div>
+                    <div class="accordion-item"><div class="accordion-header">Description <span>+</span></div><div class="accordion-content">Details...</div></div>
+                    <div class="accordion-item"><div class="accordion-header">Features <span>+</span></div><div class="accordion-content">Details...</div></div>
+                    <div class="accordion-item"><div class="accordion-header">Technical Data <span>+</span></div><div class="accordion-content">Details...</div></div>
+                    <div class="accordion-item"><div class="accordion-header">Strap <span>+</span></div><div class="accordion-content">Details...</div></div>
+                </div>
+
+                <div class="advantages-section">
+                    <div class="section-title">ADVANTAGES</div>
+                    <div class="icon-grid">
+                        <div class="feature-icon"><i class="far fa-clock"></i><p>Superior Precision</p></div>
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i><p>5 Year Warranty</p></div>
+                        <div class="feature-icon"><i class="fas fa-bolt"></i><p>Shock Resistance</p></div>
+                        <div class="feature-icon"><i class="fas fa-tint"></i><p>Water Resistance</p></div>
                     </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Features <span>+</span></div>
-                        <div class="accordion-content">Ceramic Bezel, 300m Water Resistance, Sapphire Crystal.</div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Technical Data <span>+</span></div>
-                        <div class="accordion-content">Caliber 3235, 70hr Power Reserve.</div>
-                    </div>
+                </div>
+
+                <div class="movement-section">
+                    <div class="section-title">MOVEMENT</div>
+                    <img src="https://via.placeholder.com/200?text=Mechanism" class="movement-img" alt="Movement">
+                    <p class="movement-text">Self-winding movement with traditional lever escapement. Certified Master Chronometer, approved by METAS, resistant to magnetic fields reaching 15,000 gauss.</p>
                 </div>
             </div>
         </div>
 
-        <div class="icon-grid">
-            <div class="feature-icon"><i class="far fa-clock"></i><p>Precision</p></div>
-            <div class="feature-icon"><i class="fas fa-shield-alt"></i><p>Warranty</p></div>
-            <div class="feature-icon"><i class="fas fa-bolt"></i><p>Shock Resist</p></div>
-            <div class="feature-icon"><i class="fas fa-tint"></i><p>Waterproof</p></div>
-        </div>
-
-    </main>
+        <footer class="site-footer">
+            <label class="newsletter-label">Subscribe to our newsletter</label>
+            <div class="input-group"><input type="email" placeholder="Email" class="email-input"><button class="submit-btn"><i class="fas fa-chevron-right"></i></button></div>
+            <div class="footer-divider"></div>
+            <div class="social-icons"><i class="fab fa-instagram"></i><i class="fab fa-tiktok"></i><i class="fas fa-times"></i></div>
+        </footer>
+    </div>
     
     <div id="utility-menu" class="overlay">
         <div class="overlay-header">
             <button id="close-utility" class="icon-btn"><i class="fas fa-times"></i></button>
-            <div class="logo-text">GP</div>
-            <div style="width: 44px;"></div>
+            <div class="logo-text"></div>
+            <button id="open-cart-from-menu" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
         </div>
         <ul class="menu-list">
-            <li onclick="window.location.href='index.html'">Home <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='index.html'">Watches <i class="fas fa-chevron-right"></i></li>
             <li onclick="window.location.href='accessories.html'">Accessories <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='community.html'">Community <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='about.html'">About Us <i class="fas fa-chevron-right"></i></li>
         </ul>
+    </div>
+     <div id="cart-menu" class="overlay overlay-right">
+        <div class="overlay-header">
+            <button id="open-menu-from-cart" class="icon-btn"><i class="fas fa-bars"></i></button>
+            <div class="logo-text"></div>
+            <button id="close-cart" class="icon-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-content">
+            <div style="font-weight:bold; margin-bottom:20px;">YOUR CART (1)</div>
+            <div class="cart-item">
+                <img src="https://via.placeholder.com/100" alt="Watch">
+                <div>
+                    <div>Sea Mariner NATO</div>
+                    <div class="qty-selector"><button class="qty-btn">-</button><input class="qty-input" value="1"><button class="qty-btn">+</button></div>
+                    <div class="cart-price">$7,100.00</div>
+                </div>
+            </div>
+            <div class="delivery-box">Delivery within 48 hours</div>
+            <div class="cart-footer">
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
     </div>
 
     <script src="../Javascript/script.js"></script>

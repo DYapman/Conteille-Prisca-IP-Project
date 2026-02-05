@@ -1,41 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Select Elements ---
+    // --- 1. MENUS & CART ---
     const menuBtn = document.getElementById('menu-btn');
-    const userBtn = document.getElementById('user-btn');
+    const cartBtn = document.getElementById('cart-btn');
     const utilityMenu = document.getElementById('utility-menu');
-    const accountMenu = document.getElementById('account-menu');
+    const cartMenu = document.getElementById('cart-menu');
     const closeUtility = document.getElementById('close-utility');
-    const closeAccount = document.getElementById('close-account');
+    const closeCart = document.getElementById('close-cart');
+    
+    // Cross-links
+    const openCartFromMenu = document.getElementById('open-cart-from-menu');
+    const openMenuFromCart = document.getElementById('open-menu-from-cart');
 
-    // --- Menu Functions ---
-    if(menuBtn && utilityMenu) {
-        menuBtn.addEventListener('click', () => {
-            utilityMenu.classList.add('active');
-        });
+    function toggleMenu(menu, show) {
+        if(show) menu.classList.add('active');
+        else menu.classList.remove('active');
     }
 
-    if(userBtn && accountMenu) {
-        userBtn.addEventListener('click', () => {
-            accountMenu.classList.add('active');
-        });
-    }
+    // Open/Close Events
+    if(menuBtn) menuBtn.addEventListener('click', () => { toggleMenu(utilityMenu, true); toggleMenu(cartMenu, false); });
+    if(cartBtn) cartBtn.addEventListener('click', () => { toggleMenu(cartMenu, true); toggleMenu(utilityMenu, false); });
+    
+    if(closeUtility) closeUtility.addEventListener('click', () => { toggleMenu(utilityMenu, false); });
+    if(closeCart) closeCart.addEventListener('click', () => { toggleMenu(cartMenu, false); });
 
-    if(closeUtility && utilityMenu) {
-        closeUtility.addEventListener('click', () => {
-            utilityMenu.classList.remove('active');
-        });
-    }
+    if(openCartFromMenu) openCartFromMenu.addEventListener('click', () => { toggleMenu(cartMenu, true); toggleMenu(utilityMenu, false); });
+    if(openMenuFromCart) openMenuFromCart.addEventListener('click', () => { toggleMenu(utilityMenu, true); toggleMenu(cartMenu, false); });
 
-    if(closeAccount && accountMenu) {
-        closeAccount.addEventListener('click', () => {
-            accountMenu.classList.remove('active');
-        });
-    }
-
-    // --- Accordion Functions ---
+    // --- 2. ACCORDIONS (Product Pages) ---
     const accHeaders = document.querySelectorAll('.accordion-header');
-
+    
     accHeaders.forEach(header => {
         header.addEventListener('click', () => {
             const content = header.nextElementSibling;
@@ -45,9 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 content.style.display = "none";
                 if(icon) icon.textContent = "+";
             } else {
+                // Optional: Close others
+                // document.querySelectorAll('.accordion-content').forEach(c => c.style.display = 'none');
                 content.style.display = "block";
                 if(icon) icon.textContent = "-";
             }
         });
     });
+
+    // --- 3. COUNTDOWN TIMER (Accessories Page) ---
+    // If you want a real timer, you can add logic here. For now, it's static HTML or we can animate it lightly.
 });
