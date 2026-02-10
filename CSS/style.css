@@ -198,3 +198,131 @@ header {
     .athlete-card { height: 600px; }
     .inspiring-journeys { padding: 80px 100px; }
 }
+
+/* --- AUTHENTICATION PAGES (Login/Register) --- */
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Changed to 100vh for full screen centering */
+    background-color: var(--bg-color);
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    text-align: center;
+}
+
+/* Auth Logo - Now Clickable */
+.auth-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    background: url('../Photos/LogoForCP.png') no-repeat center/contain;
+    cursor: pointer; /* Indicates it can be clicked */
+    transition: transform 0.3s ease;
+}
+
+.auth-logo:hover {
+    transform: scale(1.05);
+}
+
+.auth-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.auth-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Form Elements */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group-auth {
+    position: relative;
+    text-align: left;
+}
+
+.input-group-auth label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--accent-color); /* Gold Border */
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--primary-color);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.auth-input:focus {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+}
+
+/* Buttons */
+.btn-auth {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 15px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-auth:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Secondary Links */
+.auth-links {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.auth-links a {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+/* Social Login */
+.social-login {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+.social-icons-auth {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}

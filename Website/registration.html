@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Conteille Prisca</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-logo" onclick="window.location.href='index.html'" title="Return to Home"></div>
+            
+            <h1 class="auth-title">Register</h1>
+            <p class="auth-subtitle">Join the legacy</p>
+
+            <form class="auth-form">
+                <div class="input-group-auth">
+                    <label>EMAIL</label>
+                    <input type="email" class="auth-input" placeholder="name@example.com">
+                </div>
+
+                <div class="input-group-auth">
+                    <label>PASSWORD</label>
+                    <input type="password" class="auth-input" placeholder="Create a password">
+                </div>
+
+                <div class="input-group-auth">
+                    <label>MOBILE NUMBER</label>
+                    <div style="display: flex; gap: 10px;">
+                        <select class="auth-input" style="width: 80px; padding: 15px 5px;">
+                            <option>+65</option>
+                            <option>+1</option>
+                            <option>+44</option>
+                        </select>
+                        <input type="tel" class="auth-input" placeholder="8123 4567">
+                    </div>
+                </div>
+
+                <div class="input-group-auth">
+                    <label>BIRTHDAY (OPTIONAL)</label>
+                    <input type="date" class="auth-input" style="color: #666;">
+                </div>
+
+                <button type="submit" class="btn-auth" style="background: var(--primary-color); color: white;">Register</button>
+            </form>
+
+            <div class="auth-links">
+                <span>Already have an account? <a href="login.html">Login</a></span>
+            </div>
+
+            <div class="social-login">
+                <div class="social-icons-auth">
+                    <i class="fab fa-google"></i>
+                    <i class="fab fa-apple"></i>
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
