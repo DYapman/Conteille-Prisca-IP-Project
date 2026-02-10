@@ -32,17 +32,16 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px; /* Slightly reduced top/bottom padding to accommodate larger logo */
+    padding: 15px 30px;
     background: white;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-/* UPDATED LOGO SIZE */
 .logo-text {
-    width: 100px;  /* Increased size */
-    height: 100px; /* Increased size */
+    width: 100px;
+    height: 100px;
     background: url('../Photos/LogoForCP.png') no-repeat center/contain;
     cursor: pointer;
 }
@@ -163,7 +162,13 @@ header {
 
 /* --- ATHLETES --- */
 .athletes-sub-header { background-color: #000000; color: #ffffff; text-align: center; padding: 12px 0; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
-.athlete-card { position: relative; width: 100%; height: 500px; overflow: hidden; margin-bottom: 2px; }
+.athlete-card { 
+    position: relative; 
+    width: 100%; 
+    height: 500px; 
+    overflow: hidden; 
+    margin-bottom: 0; /* REMOVED THE GAP HERE */
+}
 .athlete-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: brightness(0.85); transition: transform 0.5s ease; }
 .athlete-card:hover .athlete-img { transform: scale(1.05); }
 .athlete-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; width: 100%; z-index: 10; }
@@ -183,6 +188,24 @@ header {
 .social-icons { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
 .social-icons i { font-size: 1.2rem; }
 
+/* --- AUTH PAGES --- */
+.auth-container { max-width: 450px; margin: 80px auto; padding: 0 20px; text-align: center; }
+.auth-title { font-family: var(--font-serif); font-size: 2.5rem; color: var(--primary-color); margin-bottom: 10px; }
+.auth-subtitle { font-family: var(--font-sans); font-size: 0.95rem; color: #666; margin-bottom: 40px; line-height: 1.5; }
+.auth-form { text-align: left; }
+.form-group { margin-bottom: 25px; }
+.form-label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; color: #333; font-weight: bold; }
+.form-input { width: 100%; padding: 15px; border: 1px solid #ccc; font-family: var(--font-sans); font-size: 1rem; background-color: #fff; outline: none; transition: border-color 0.3s; }
+.form-input:focus { border-color: var(--primary-color); }
+.auth-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; color: #555; }
+.auth-link { color: #333; text-decoration: underline; cursor: pointer; transition: color 0.3s; }
+.auth-link:hover { color: var(--accent-color); }
+.checkbox-wrap { display: flex; align-items: center; gap: 8px; }
+.btn-primary.auth-btn { width: 100%; margin-bottom: 20px; }
+.switch-auth { margin-top: 20px; font-size: 0.9rem; color: #666; }
+.switch-auth a { color: var(--primary-color); font-weight: bold; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+.switch-auth a:hover { border-bottom: 1px solid var(--primary-color); }
+
 /* --- RESPONSIVE --- */
 @media (min-width: 768px) {
     .collection-grid { display: flex; }
@@ -199,130 +222,136 @@ header {
     .inspiring-journeys { padding: 80px 100px; }
 }
 
-/* --- AUTHENTICATION PAGES (Login/Register) --- */
-.auth-page {
+/* --- CLUB / MEMBERSHIP PAGE --- */
+.club-page-wrapper {
+    background-color: var(--primary-color); /* Navy Background */
+    color: white;
+}
+
+/* Hero Section */
+.club-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    background: url('../Photos/image 15.png') no-repeat center/cover; /* Using one of your uploaded luxury images */
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Changed to 100vh for full screen centering */
-    background-color: var(--bg-color);
-}
-
-.auth-container {
-    width: 100%;
-    max-width: 400px;
-    padding: 40px;
     text-align: center;
 }
 
-/* Auth Logo - Now Clickable */
-.auth-logo {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 30px;
-    background: url('../Photos/LogoForCP.png') no-repeat center/contain;
-    cursor: pointer; /* Indicates it can be clicked */
-    transition: transform 0.3s ease;
+.club-hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26, 34, 56, 0.6); /* Navy Overlay */
 }
 
-.auth-logo:hover {
-    transform: scale(1.05);
+.club-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    padding: 20px;
 }
 
-.auth-title {
+.club-title {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 10px;
+    font-size: 3.5rem;
+    color: var(--accent-color); /* Gold */
+    margin-bottom: 20px;
+    letter-spacing: 2px;
 }
 
-.auth-subtitle {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 40px;
+.club-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    font-weight: 300;
 }
 
-/* Form Elements */
-.auth-form {
+/* Content Sections (Zig-Zag Layout) */
+.club-section {
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
-.input-group-auth {
-    position: relative;
-    text-align: left;
+.club-block {
+    display: flex;
+    flex-direction: column;
 }
 
-.input-group-auth label {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--primary-color);
-    margin-bottom: 5px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.auth-input {
+.club-img-container {
     width: 100%;
-    padding: 15px;
-    border: 1px solid var(--accent-color); /* Gold Border */
-    background: transparent;
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    color: var(--primary-color);
-    outline: none;
+    height: 400px;
+}
+
+.club-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.club-text-container {
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--primary-color);
+}
+
+.club-heading {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.club-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.btn-club {
+    display: inline-block;
+    padding: 15px 30px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    width: fit-content;
     transition: all 0.3s ease;
 }
 
-.auth-input:focus {
-    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-}
-
-/* Buttons */
-.btn-auth {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    padding: 15px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s, color 0.3s;
-}
-
-.btn-auth:hover {
-    background: var(--primary-color);
-    color: #fff;
-}
-
-/* Secondary Links */
-.auth-links {
-    margin-top: 20px;
-    font-size: 0.8rem;
-    color: #888;
-}
-
-.auth-links a {
-    text-decoration: underline;
+.btn-club:hover {
+    background: var(--accent-color);
     color: var(--primary-color);
 }
 
-/* Social Login */
-.social-login {
-    margin-top: 40px;
-    border-top: 1px solid #eee;
-    padding-top: 30px;
+/* Responsive Zig-Zag */
+@media (min-width: 900px) {
+    .club-block {
+        flex-direction: row;
+    }
+    .club-block.reverse {
+        flex-direction: row-reverse;
+    }
+    .club-img-container, .club-text-container {
+        width: 50%;
+        height: 600px; /* Fixed height for symmetry */
+    }
+    .club-text-container {
+        padding: 0 80px;
+    }
 }
 
-.social-icons-auth {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    font-size: 1.5rem;
-    color: var(--primary-color);
+/* Call to Action Bottom */
+.club-cta-section {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #151b2e; /* Slightly darker navy */
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
