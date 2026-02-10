@@ -14,20 +14,80 @@
         <button id="cart-btn" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
     </header>
 
+    <div class="athletes-sub-header">ATHLETES</div>
+
     <div class="page-container">
-        <div class="video-placeholder">Athletes Campaign</div>
-        <div style="padding:40px; text-align:center;">
-            <h2>Coming Soon</h2>
-            <p>Our athletes page is under construction.</p>
+        
+        <div class="athlete-card">
+            <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80" class="athlete-img" alt="Adam Scott">
+            <div class="athlete-overlay">
+                <h3 class="athlete-name">Adam Scott</h3>
+                <p class="athlete-achievement">2013 Masters Winner</p>
+            </div>
         </div>
+
+        <div class="athlete-card">
+            <img src="https://images.unsplash.com/photo-1519861531473-92002639313e?auto=format&fit=crop&w=800&q=80" class="athlete-img" alt="Derrick Rose">
+            <div class="athlete-overlay">
+                <h3 class="athlete-name">Derrick Rose</h3>
+                <p class="athlete-achievement">NBA MVP</p>
+            </div>
+        </div>
+
+        <div class="athlete-card">
+            <img src="https://images.unsplash.com/photo-1534008278635-776e6904f758?auto=format&fit=crop&w=800&q=80" class="athlete-img" alt="Sebastian Vettel">
+            <div class="athlete-overlay">
+                <h3 class="athlete-name">Sebastian Vettel</h3>
+                <p class="athlete-achievement">4x F1 World Champion</p>
+            </div>
+        </div>
+
+        <div class="athlete-card">
+            <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80" class="athlete-img" alt="Son Heung-min">
+            <div class="athlete-overlay">
+                <h3 class="athlete-name">Son Heung-min</h3>
+                <p class="athlete-achievement">2020 FIFA Puskás Award</p>
+            </div>
+        </div>
+
+        <div class="athlete-card">
+            <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80" class="athlete-img" alt="Manny Pacquiao">
+            <div class="athlete-overlay">
+                <h3 class="athlete-name">Manny Pacquiao</h3>
+                <p class="athlete-achievement">Fighter of the Century</p>
+            </div>
+        </div>
+
+        <div class="athlete-card">
+            <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=800&q=80" class="athlete-img" alt="Joseph Schooling">
+            <div class="athlete-overlay">
+                <h3 class="athlete-name">Joseph Schooling</h3>
+                <p class="athlete-achievement">2016 Gold Olympic Medalist</p>
+            </div>
+        </div>
+
+        <div class="inspiring-journeys">
+            <h2 class="inspiring-title">Inspiring Journeys</h2>
+            <p class="inspiring-text">
+                CP has cultivated a prestigious circle of ambassadors who define the pinnacle of their respective crafts. This tradition begins with Adam Scott, whose grace on the green mirrors the brand's timeless elegance, and extends to the defiant spirit of Derrick Rose, representing the resilience of a high-performance movement. Sebastian Vettel reinforces the brand's technical precision, while Heung-min Son brings a sense of modern versatility and global influence. The legendary Manny Pacquiao contributes a storied history of grit and power, and Joseph Schooling rounds out the roster, embodying the split-second accuracy essential to greatness. Through their extraordinary achievements, these individuals reflect the core values that define the world of CP.
+            </p>
+        </div>
+
     </div>
     <footer class="site-footer">
         <label class="newsletter-label">Subscribe to our newsletter</label>
-        <div class="input-group"><input type="email" placeholder="Email" class="email-input"><button class="submit-btn"><i class="fas fa-chevron-right"></i></button></div>
+        <div class="input-group">
+            <input type="email" placeholder="Email" class="email-input">
+            <button class="submit-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
         <div class="footer-divider"></div>
-        <div class="social-icons"><i class="fab fa-instagram"></i><i class="fab fa-tiktok"></i><i class="fas fa-times"></i></div>
+        <div class="social-icons">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-tiktok"></i>
+            <i class="fas fa-times"></i>
+        </div>
     </footer>
-    
+
     <div id="utility-menu" class="overlay">
         <div class="overlay-header">
             <button id="close-utility" class="icon-btn"><i class="fas fa-times"></i></button>
@@ -39,9 +99,11 @@
             <li onclick="window.location.href='accessories.html'">Accessories <i class="fas fa-chevron-right"></i></li>
             <li onclick="window.location.href='community.html'">Community <i class="fas fa-chevron-right"></i></li>
             <li onclick="window.location.href='about.html'">About Us <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='athletes.html'">Athletes <i class="fas fa-chevron-right"></i></li>
         </ul>
     </div>
-     <div id="cart-menu" class="overlay overlay-right">
+
+    <div id="cart-menu" class="overlay overlay-right">
         <div class="overlay-header">
             <button id="open-menu-from-cart" class="icon-btn"><i class="fas fa-bars"></i></button>
             <div class="logo-text"></div>
@@ -63,6 +125,7 @@
             </div>
         </div>
     </div>
+
     <script src="../Javascript/script.js"></script>
 </body>
 </html>
