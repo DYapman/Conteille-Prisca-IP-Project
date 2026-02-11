@@ -92,7 +92,9 @@ function startCountdown() {
 startCountdown();
 });
 
-/* --- 3. RANDOM FORUM POST GENERATOR --- */
+
+
+    /* --- 3. RANDOM FORUM POST GENERATOR --- */
     const forumFeed = document.getElementById('forum-feed');
 
     if (forumFeed) {
@@ -125,6 +127,7 @@ startCountdown();
             { name: "BrainOConner", initial: "BOC" },
             { name: "JamesBond", initial: "JB" },
             { name: "VintageSoul", initial: "VS" }
+        
         ];
 
         // Function to get a random number
@@ -132,18 +135,18 @@ startCountdown();
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        // Generate 3 random posts
+        // Generate 6 random posts
         let htmlContent = "";
         
-        // We loop 3 times to create 3 posts
-        for (let i = 0; i < 3; i++) {
+        // This loop now runs 6 times
+        for (let i = 0; i < 6; i++) {
             // Pick a random topic and user
             const randomTopic = topics[Math.floor(Math.random() * topics.length)];
             const randomUser = users[Math.floor(Math.random() * users.length)];
-            const replies = getRandomInt(1, 45); // Random replies between 1 and 45
-            const hoursAgo = getRandomInt(1, 12); // Random time ago
+            const replies = getRandomInt(1, 45); 
+            const hoursAgo = getRandomInt(1, 12); 
 
-            // Build the HTML string (matching your existing design)
+            // Build the HTML string 
             htmlContent += `
                 <div class="forum-post">
                     <div class="avatar-circle">${randomUser.initial}</div>
