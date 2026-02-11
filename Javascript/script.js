@@ -39,170 +39,178 @@ document.addEventListener('DOMContentLoaded', () => {
                 content.style.display = "none";
                 if(icon) icon.textContent = "+";
             } else {
-                // Optional: Close others
-                // document.querySelectorAll('.accordion-content').forEach(c => c.style.display = 'none');
                 content.style.display = "block";
                 if(icon) icon.textContent = "-";
             }
+        });
     });
 
-  /* --- COUNTDOWN TIMER --- */
-function startCountdown() {
-    // Set the date we're counting down to (Example: 3 days from now)
-    // You can change this to a specific date like: new Date("Oct 15, 2026 12:00:00").getTime();
-    var countDownDate = new Date(); 
-    countDownDate.setDate(countDownDate.getDate() + 3); // Currently set to 3 days from now
+    /* --- COUNTDOWN TIMER --- */
+    function startCountdown() {
+        var countDownDate = new Date(); 
+        countDownDate.setDate(countDownDate.getDate() + 3); 
 
-    // Update the count down every 1 second
-    var x = setInterval(function() {
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
 
-        // Get today's date and time
-        var now = new Date().getTime();
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the result in the elements with id="days", "hours", etc.
-        // We check if the element exists first to avoid errors on other pages
-        if (document.getElementById("days")) {
-            document.getElementById("days").innerHTML = (days < 10 ? "0" : "") + days;
-            document.getElementById("hours").innerHTML = (hours < 10 ? "0" : "") + hours;
-            document.getElementById("minutes").innerHTML = (minutes < 10 ? "0" : "") + minutes;
-            document.getElementById("seconds").innerHTML = (seconds < 10 ? "0" : "") + seconds;
-        }
-
-        // If the count down is finished, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            if (document.getElementById("countdown")) {
-                document.getElementById("countdown").innerHTML = "RELEASED";
+            if (document.getElementById("days")) {
+                document.getElementById("days").innerHTML = (days < 10 ? "0" : "") + days;
+                document.getElementById("hours").innerHTML = (hours < 10 ? "0" : "") + hours;
+                document.getElementById("minutes").innerHTML = (minutes < 10 ? "0" : "") + minutes;
+                document.getElementById("seconds").innerHTML = (seconds < 10 ? "0" : "") + seconds;
             }
-        }
-    }, 1000);
+
+            if (distance < 0) {
+                clearInterval(x);
+                if (document.getElementById("countdown")) {
+                    document.getElementById("countdown").innerHTML = "RELEASED";
+                }
+            }
+        }, 1000);
+    }
+    startCountdown();
+});
+
+/* --- 3. RANDOM FORUM POST GENERATOR --- */
+const forumFeed = document.getElementById('forum-feed');
+
+if (forumFeed) {
+    const topics = [
+        "What makes a watch feel special beyond specs?",
+        "Thoughts on the new Novus Flux trend?",
+        "Is the SeaMariner actually worth the price tag?",
+        "Help me identify my father's timepiece.",
+        "Leather vs. NATO straps for daily wear?",
+        "The debate: Swiss movement vs. Japanese precision.",
+        "Just acquired my grail watch! (Photos)",
+        "Maintenance tips for automatic calibers.",
+        "Do you think Bayside Blue should be added to colors?",
+        "Why do we still love mechanical watches in a digital age?",
+        "My watch broke during a fight, where to fix?",
+        "HELP!!! I can’t decide what color I should get"
+    ];
+
+    const users = [
+        { name: "MartinDLux", initial: "MDL" },
+        { name: "ChronoTrigger", initial: "CT" },
+        { name: "HorologyFan", initial: "HF" },
+        { name: "WristCheck", initial: "WC" },
+        { name: "TimeKeeper88", initial: "TK" },
+        { name: "LuxeCollector", initial: "LC" },
+        { name: "BrainOConner", initial: "BOC" },
+        { name: "JamesBond", initial: "JB" },
+        { name: "VintageSoul", initial: "VS" }
+    ];
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    let htmlContent = "";
+    for (let i = 0; i < 6; i++) {
+        const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+        const randomUser = users[Math.floor(Math.random() * users.length)];
+        const replies = getRandomInt(1, 45); 
+        const hoursAgo = getRandomInt(1, 12); 
+
+        htmlContent += `
+            <div class="forum-post">
+                <div class="avatar-circle">${randomUser.initial}</div>
+                <div class="post-content">
+                    <h4>${randomTopic}</h4>
+                    <div class="post-meta">${randomUser.name} &nbsp;&nbsp; ${replies} Replies</div>
+                </div>
+            </div>
+            <div class="post-time">Last posted ${hoursAgo} hours ago</div>
+        `;
+    }
+    forumFeed.innerHTML = htmlContent;
 }
 
-// Start the timer when the page loads
-startCountdown();
-});
-
-
-
-    /* --- 3. RANDOM FORUM POST GENERATOR --- */
-    const forumFeed = document.getElementById('forum-feed');
-
-    if (forumFeed) {
-        // A bank of watch-related topics
-        const topics = [
-            "What makes a watch feel special beyond specs?",
-            "Thoughts on the new Novus Flux trend?",
-            "Is the SeaMariner actually worth the price tag?",
-            "Help me identify my father's timepiece.",
-            "Leather vs. NATO straps for daily wear?",
-            "The debate: Swiss movement vs. Japanese precision.",
-            "Just acquired my grail watch! (Photos)",
-            "Maintenance tips for automatic calibers.",
-            "Do you think Bayside Blue should be added to colors?",
-            "Why do we still love mechanical watches in a digital age?",
-            "My watch broke during a fight, where to fix?",
-            "HELP!!! I can’t decide what color I should get"
-        
-            
-        ];
-
-        // A bank of fictional users
-        const users = [
-            { name: "MartinDLux", initial: "MDL" },
-            { name: "ChronoTrigger", initial: "CT" },
-            { name: "HorologyFan", initial: "HF" },
-            { name: "WristCheck", initial: "WC" },
-            { name: "TimeKeeper88", initial: "TK" },
-            { name: "LuxeCollector", initial: "LC" },
-            { name: "BrainOConner", initial: "BOC" },
-            { name: "JamesBond", initial: "JB" },
-            { name: "VintageSoul", initial: "VS" }
-        
-        ];
-
-        // Function to get a random number
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
-        // Generate 6 random posts
-        let htmlContent = "";
-        
-        // This loop now runs 6 times
-        for (let i = 0; i < 6; i++) {
-            // Pick a random topic and user
-            const randomTopic = topics[Math.floor(Math.random() * topics.length)];
-            const randomUser = users[Math.floor(Math.random() * users.length)];
-            const replies = getRandomInt(1, 45); 
-            const hoursAgo = getRandomInt(1, 12); 
-
-            // Build the HTML string 
-            htmlContent += `
-                <div class="forum-post">
-                    <div class="avatar-circle">${randomUser.initial}</div>
-                    <div class="post-content">
-                        <h4>${randomTopic}</h4>
-                        <div class="post-meta">${randomUser.name} &nbsp;&nbsp; ${replies} Replies</div>
-                    </div>
-                </div>
-                <div class="post-time">Last posted ${hoursAgo} hours ago</div>
-            `;
-        }
-
-        // Inject the HTML into the page
-        forumFeed.innerHTML = htmlContent;
-    }
-    
+/* --- 4. REGISTRATION API --- */
 const registerForm = document.getElementById('registration-form');
 
-    if (registerForm) {
-        registerForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop the page from reloading
+if (registerForm) {
+    registerForm.addEventListener('submit', function(e) {
+        e.preventDefault(); 
 
-            // 1. Collect the data from the HTML
-            const userData = {
-                "first_name": document.getElementById('firstName').value,
-                "last_name": document.getElementById('lastName').value,
-                "date_of_birth": document.getElementById('dob').value,
-                "email": document.getElementById('email').value,
-                "mobile_number": document.getElementById('mobile').value,
-                "password": document.getElementById('password').value
-            };
+        // 1. Get Elements (Make sure IDs match your HTML)
+        const firstNameEl = document.getElementById('FirstName');
+        const lastNameEl = document.getElementById('LastName');
+        const dobEl = document.getElementById('birthdate');
+        const emailEl = document.getElementById('email');
+        const mobileEl = document.getElementById('mobile'); // Matches id="mobile"
+        const passEl = document.getElementById('password');
 
-            // 2. Send the data to RestDB
-            // REPLACE THESE VARIABLES WITH YOUR ACTUAL KEYS
-            const dbUrl = "https://contielleprisca-ad78.restdb.io/rest/app-users"; 
-            const apiKey = "698cb182bf4bcc683253e4c3"; 
+        // 2. Safety Check
+        if (!firstNameEl || !lastNameEl || !emailEl || !mobileEl || !passEl) {
+            alert("Error: Some form fields are missing. Check your HTML IDs.");
+            return;
+        }
 
-            fetch(dbUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": apiKey,
-                    "Cache-Control": "no-cache"
-                },
-                body: JSON.stringify(userData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Success:", data);
+        // 3. Date Fix (Send null if empty)
+        let finalDob = null;
+        if (dobEl && dobEl.value !== "") {
+            finalDob = dobEl.value;
+        }
+
+        // 4. Prepare Data
+        const userData = {
+            "first_name": firstNameEl.value,
+            "last_name": lastNameEl.value,
+            "date_of_birth": finalDob,
+            "email": emailEl.value,
+            "mobile_number": mobileEl.value, // RestDB Column Name
+            "password": passEl.value
+        };
+
+        // 5. Send to RestDB
+        const dbUrl = "https://contielleprisca-ad78.restdb.io/rest/app-users"; 
+        const apiKey = "698cb182bf4bcc683253e4c3"; 
+
+        const submitBtn = registerForm.querySelector('button[type="submit"]');
+        submitBtn.innerText = "Processing...";
+        submitBtn.disabled = true;
+
+        fetch(dbUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": apiKey,
+                "Cache-Control": "no-cache"
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(async response => {
+            const data = await response.json();
+            if (response.ok) {
                 alert("Registration Successful!");
-                // Redirect to login page after successful save
                 window.location.href = 'login.html';
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Something went wrong. Please try again.");
-            });
+            } else {
+                console.error("DB Error:", data);
+                // Handle "Missing required field" error
+                let msg = "Registration Failed";
+                if (data.list && data.list.length > 0) {
+                    msg += ": " + data.list[0].message; 
+                } else if (data.message) {
+                    msg += ": " + data.message;
+                }
+                alert(msg);
+                submitBtn.innerText = "Register";
+                submitBtn.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error("Network Error:", error);
+            alert("Network Error. Check console.");
+            submitBtn.innerText = "Register";
+            submitBtn.disabled = false;
         });
-    }
-});
+    });
+}
