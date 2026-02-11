@@ -134,83 +134,104 @@ if (forumFeed) {
 }
 
 /* --- 4. REGISTRATION API --- */
-const registerForm = document.getElementById('registration-form');
+document.addEventListener('DOMContentLoaded', () => {
 
-if (registerForm) {
-    registerForm.addEventListener('submit', function(e) {
-        e.preventDefault(); 
+    const registerForm = document.getElementById('registration-form');
 
-        // 1. Get Elements (Make sure IDs match your HTML)
+    if (!registerForm) return;
+
+    registerForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Get Elements
         const firstNameEl = document.getElementById('FirstName');
         const lastNameEl = document.getElementById('LastName');
-        const dobEl = document.getElementById('birthdate');
         const emailEl = document.getElementById('email');
-        const mobileEl = document.getElementById('mobile'); // Matches id="mobile"
+        const mobileEl = document.getElementById('mobile');
         const passEl = document.getElementById('password');
+        const confirmPassEl = document.getElementById('confirm-password');
 
-        // 2. Safety Check
-        if (!firstNameEl || !lastNameEl || !emailEl || !mobileEl || !passEl) {
-            alert("Error: Some form fields are missing. Check your HTML IDs.");
+        // Safety check
+        if (!firstNameEl || !lastNameEl || !emailEl || !mobileEl || !passEl || !confirmPassEl) {
+            console.error('Missing elements:', {
+                firstNameEl,
+                lastNameEl,
+                emailEl,
+                mobileEl,
+                passEl,
+                confirmPassEl
+            });
+            alert('Form error. Please refresh the page.');
             return;
         }
 
-        // 3. Date Fix (Send null if empty)
-        let finalDob = null;
-        if (dobEl && dobEl.value !== "") {
-            finalDob = dobEl.value;
+        const firstName = firstNameEl.value.trim();
+        const lastName = lastNameEl.value.trim();
+        const email = emailEl.value.trim().toLowerCase();
+        const mobile = mobileEl.value.trim();
+        const password = passEl.value;
+        const confirmPassword = confirmPassEl.value;
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
         }
 
-        // 4. Prepare Data
-        const userData = {
-            "first_name": firstNameEl.value,
-            "last_name": lastNameEl.value,
-            "date_of_birth": finalDob,
-            "email": emailEl.value,
-            "mobile_number": mobileEl.value, // RestDB Column Name
-            "password": passEl.value
-        };
+        const birthdateEl = document.getElementById('birthdate');
 
-        // 5. Send to RestDB
-        const dbUrl = "https://contielleprisca-ad78.restdb.io/rest/app-users"; 
-        const apiKey = "698cb182bf4bcc683253e4c3"; 
+const userData = {
+    email: email,
+    FirstName: firstName,
+    LastName: lastName,
+    mobile_number: Number(mobile),
+    password: password,
+    birthdate: birthdateEl.value || null
+};
+
+     
+
+        const dbUrl = 'https://contielleprisca-ad78.restdb.io/rest/app-users';
+        const apiKey = '698cb182bf4bcc683253e4c3';
 
         const submitBtn = registerForm.querySelector('button[type="submit"]');
-        submitBtn.innerText = "Processing...";
-        submitBtn.disabled = true;
+        const defaultBtnText = submitBtn ? submitBtn.innerText : 'Register';
 
-        fetch(dbUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-apikey": apiKey,
-                "Cache-Control": "no-cache"
-            },
-            body: JSON.stringify(userData)
-        })
-        .then(async response => {
-            const data = await response.json();
-            if (response.ok) {
-                alert("Registration Successful!");
-                window.location.href = 'login.html';
-            } else {
-                console.error("DB Error:", data);
-                // Handle "Missing required field" error
-                let msg = "Registration Failed";
-                if (data.list && data.list.length > 0) {
-                    msg += ": " + data.list[0].message; 
-                } else if (data.message) {
-                    msg += ": " + data.message;
-                }
-                alert(msg);
-                submitBtn.innerText = "Register";
+        if (submitBtn) {
+            submitBtn.innerText = 'Processing...';
+            submitBtn.disabled = true;
+        }
+
+        try {
+            const response = await fetch(dbUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-apikey': apiKey,
+                    'Cache-Control': 'no-cache'
+                },
+                body: JSON.stringify(userData)
+            });
+
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                const detail = data?.list?.[0]?.message || data?.message || 'Unknown error';
+                alert(`Registration Failed: ${detail}`);
+                return;
+            }
+
+            alert('Registration Successful!');
+            registerForm.reset();
+            window.location.href = 'login.html';
+
+        } catch (error) {
+            console.error('Network Error:', error);
+            alert('Network Error. Please try again.');
+        } finally {
+            if (submitBtn) {
+                submitBtn.innerText = defaultBtnText;
                 submitBtn.disabled = false;
             }
-        })
-        .catch(error => {
-            console.error("Network Error:", error);
-            alert("Network Error. Check console.");
-            submitBtn.innerText = "Register";
-            submitBtn.disabled = false;
-        });
+        }
     });
-}
+});
