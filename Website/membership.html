@@ -3,82 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Club - Contielle Prisca</title>
+    <title>Membership - Contielle Prisca</title>
+    
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body class="club-page-wrapper">
-    
-    <header>
-        <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
-        <div class="logo-text" onclick="window.location.href='index.html'"></div>
-        <button id="cart-btn" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
-    </header>
+<body>
 
-    <section class="club-hero">
-        <div class="club-hero-content">
-            <h1 class="club-title">THE CLUB</h1>
-            <p class="club-subtitle">
-                Ownership is merely the beginning. <br>
-                Welcome to a circle defined by legacy, precision, and exclusivity.
-            </p>
+    <section class="membership-hero">
+        <div class="hero-overlay"></div>
+        
+        <nav class="hero-nav">
+            <button class="nav-icon" id="menu-btn">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+
+            <div class="logo-container" onclick="window.location.href='index.html'">
+                <div class="logo-placeholder">CP</div>
+            </div>
+
+            <button class="nav-icon" id="cart-btn">
+                <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </button>
+        </nav>
+
+        <div class="hero-text">
+            <p class="hero-eyebrow">ABOUT</p>
+            <h1 class="hero-title">Watches & Wonders</h1>
+            <p class="hero-subtitle">Since 2015</p>
         </div>
     </section>
 
-    <div class="club-section">
+    <section class="membership-content">
+        <h2 class="content-heading">Passion, Sincerity, Humility</h2>
+        <p class="content-body">
+            Watches & Wonders was founded in 2015 as a community between new followers of CP. Since then, the club has blossomed into a horological community; a modest fraternity of passionate people coming together to share their appreciation of beautiful timepieces.
+        </p>
+        <p class="content-body">
+            We operate on three core values: Passion, Sincerity, and Humility. The doors of the club are always open to earnest and modest horology enthusiasts who seek more than just a status symbol.
+        </p>
+    </section>
+
+    <section class="club-section">
         
         <div class="club-block">
             <div class="club-img-container">
-                <img src="../Photos/image 16.png" alt="Watchmaking Excellence">
+                <img src="../Photos/image 15.png" alt="The Community"> 
             </div>
             <div class="club-text-container">
-                <h2 class="club-heading">Extended Warranty</h2>
+                <h3 class="club-heading">The Inner Circle</h3>
                 <p class="club-desc">
-                    Every Contielle Prisca timepiece is a testament to endurance. Members enjoy an exclusive extension on their warranty, ensuring that your legacy remains timeless. Register your timepiece to activate your privileges and secure priority servicing at our global boutiques.
+                    "The World's glocal horological secret society. A clubhouse for the discerning watch connoisseur."
+
                 </p>
-                <a href="register.html" class="btn-club">Register Your Watch</a>
             </div>
         </div>
 
         <div class="club-block reverse">
             <div class="club-img-container">
-                <img src="../Photos/image 17.png" alt="Private Events">
+                <img src="../Photos/image 16.png" alt="Private Events">
             </div>
             <div class="club-text-container">
-                <h2 class="club-heading">Private Events</h2>
+                <h3 class="club-heading">Beyond the Watch</h3>
                 <p class="club-desc">
-                    From private factory tours in Switzerland to intimate galas in Singapore, Club membership grants you access to our calendar of events. Connect with fellow collectors and be the first to view our limited-edition prototypes before they are revealed to the world.
+                    “We’re dedicated to making a difference in horological appreciation and culture, one meaningful connection at a time.”
+
                 </p>
-                <a href="login.html" class="btn-club">Member Login</a>
             </div>
         </div>
 
-    </div>
+        <div class="club-block">
+            <div class="club-img-container">
+                <img src="../Photos/image 17.png" alt="Curated Collection">
+            </div>
+            <div class="club-text-container">
+                <h3 class="club-heading">Curated by Enthusiasts</h3>
+                <p class="club-desc">
+                    
+What We Do:
 
-    <div class="club-cta-section">
-        <h2 class="club-heading">Already a Member?</h2>
-        <p class="club-desc" style="text-align: center; max-width: 600px; margin: 0 auto 30px;">
-            Access your digital vault, manage your collection, and view your exclusive offers.
-        </p>
-        <div style="display: flex; gap: 20px; justify-content: center;">
-            <a href="login.html" class="btn-club">Login</a>
-            <a href="register.html" class="btn-club" style="background: var(--accent-color); color: var(--primary-color);">Join The Club</a>
-        </div>
-    </div>
 
-    <footer class="site-footer">
-        <label class="newsletter-label">Subscribe to our newsletter</label>
-        <div class="input-group">
-            <input type="email" placeholder="Email" class="email-input">
-            <button class="submit-btn"><i class="fas fa-chevron-right"></i></button>
+
+Original Media Content - Polished, immersive, and narrative driven.
+
+Meets - A platform for members, associates, and the community at large to come together.
+
+Activations - Manufacture visits, exclusive events, private viewings, dialogue sessions, panel discussions, and workshops for members.
+
+Collaborative Editions - We work with brands we love to produce important and meaningful special editions for our community.
+
+                </p>
+                <a href="registration.html" class="btn-club">Apply for Membership</a>
+            </div>
         </div>
-        <div class="footer-divider"></div>
-        <div class="social-icons">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-tiktok"></i>
-            <i class="fas fa-times"></i>
-        </div>
-    </footer>
+
+    </section>
 
     <div id="utility-menu" class="overlay">
         <div class="overlay-header">
@@ -90,8 +110,7 @@
             <li onclick="window.location.href='index.html'">Watches <i class="fas fa-chevron-right"></i></li>
             <li onclick="window.location.href='accessories.html'">Accessories <i class="fas fa-chevron-right"></i></li>
             <li onclick="window.location.href='community.html'">Community <i class="fas fa-chevron-right"></i></li>
-            <li onclick="window.location.href='membership.html'">Membership <i class="fas fa-chevron-right"></i></li>
-            <li onclick="window.location.href='about.html'">About Us <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='membership.html'">About Us <i class="fas fa-chevron-right"></i></li>
             <li onclick="window.location.href='athletes.html'">Athletes <i class="fas fa-chevron-right"></i></li>
         </ul>
     </div>
