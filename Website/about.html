@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Contielle Prisca</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
+        <div class="logo-text" onclick="window.location.href='index.html'"></div>
+        <button id="cart-btn" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
+    </header>
+
+    <div class="page-container">
+        
+        <section class="about-section">
+            <div class="about-content-wrapper">
+                <div class="about-image-column">
+                    <img src="../Photos/image 15.png" alt="Founders Darryl Yap and Marcus Valdez" class="about-feature-img">
+                </div>
+                <div class="about-text-column">
+                    <h2 class="about-heading">ORIGINS</h2>
+                    <p class="about-text">
+                        The history of Contielle Prisca began in 1967 founded by two friends, Darryl Yap and Marcus Valdez. Their partnership was a natural fit: from design to watchmaking, their passions fully aligned regardless of race.
+                    </p>
+                    <p class="about-text">
+                        One Indonesian and One Filipino, in the union of their respective skills, Contielle Prisca was born.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section alt-bg">
+            <div class="about-content-wrapper reverse-layout">
+                <div class="about-image-column">
+                    <img src="../Photos/LogoForCP.png" alt="Contielle Prisca Emblem" class="about-feature-img contain-img">
+                </div>
+                <div class="about-text-column">
+                    <h2 class="about-heading">DESIGN</h2>
+                    <p class="about-text">
+                        The clockwork gears was chosen as a logo to represent and idealize the vision Contielle Prisca has for watches: to embody "Defiant Elegance."
+                    </p>
+                    <p class="about-text">
+                        It represents a unique duality: the resilient, territorial strength of a steampunk paired with the fluid, ornamental beauty of a high-end timepiece.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-content-wrapper">
+                <div class="about-image-column">
+                    <img src="../Photos/bluefish.png" alt="The Sea Mariner" class="about-feature-img">
+                </div>
+                <div class="about-text-column">
+                    <h2 class="about-heading">ICONIC SIGNATURE</h2>
+                    <p class="about-text">
+                        The Sea Mariner, the first watch produced by Contielle Prisca, bridges the gap between a rugged tactical instrument and a work of fluid art.
+                    </p>
+                    <p class="about-text">
+                        Engineered with the uncompromising utility of a classic "Sub" and the ornate, technical finishing of a "Seamaster," it features a 300m-rated case designed with a sleek, aggressive profile. It is a diver built for those who value the resilience of a warrior and the elegance of an icon.
+                    </p>
+                    <br>
+                    <a href="seamariner.html" class="btn-primary" style="padding: 15px 30px; display:inline-block;">Discover The Sea Mariner</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="site-footer">
+        <label class="newsletter-label">Subscribe to our newsletter</label>
+        <div class="input-group">
+            <input type="email" placeholder="Email" class="email-input">
+            <button class="submit-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="social-icons">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fas fa-times"></i></a> </div>
+        </div>
+    </footer>
+
+    <div id="utility-menu" class="overlay">
+        <div class="overlay-header">
+            <button id="close-utility" class="icon-btn"><i class="fas fa-times"></i></button>
+            <div class="logo-text"></div>
+            <button id="open-cart-from-menu" class="icon-btn"><i class="fas fa-shopping-bag"></i></button>
+        </div>
+        <ul class="menu-list">
+            <li onclick="window.location.href='index.html'">Watches <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='accessories.html'">Accessories <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='membership.html'">Membership <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='athletes.html'">Athletes <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='community.html'">Community <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='#'">Rank <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='#'">Profile <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='settings.html'">Settings <i class="fas fa-chevron-right"></i></li>
+            <li onclick="window.location.href='about us.html'">About Us <i class="fas fa-chevron-right"></i></li>
+        </ul>
+    </div>
+
+    <div id="cart-menu" class="overlay overlay-right">
+        <div class="overlay-header">
+            <button id="open-menu-from-cart" class="icon-btn"><i class="fas fa-bars"></i></button>
+            <div class="logo-text"></div>
+            <button id="close-cart" class="icon-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-content">
+            <div class="cart-title">YOUR CART (1)</div>
+            <div class="cart-item">
+                <img src="../Photos/bluefish.png" alt="Watch">
+                <div>
+                    <div>Sea Mariner NATO</div>
+                    <div class="qty-selector"><button class="qty-btn">-</button><input class="qty-input" value="1"><button class="qty-btn">+</button></div>
+                    <div class="cart-price">$7,100.00</div>
+                </div>
+            </div>
+            <div class="delivery-box">Delivery within 48 hours</div>
+            <div class="cart-footer">
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Javascript/script.js"></script>
+</body>
+</html>
