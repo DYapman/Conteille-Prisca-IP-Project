@@ -3,47 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Conteille Prisca</title>
+    <title>Login - Contielle Prisca</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-    <div class="auth-page">
-        <div class="auth-container">
-            <div class="auth-logo" onclick="window.location.href='index.html'" title="Return to Home"></div>
-            
-            <h1 class="auth-title">Login</h1>
-            <p class="auth-subtitle">Welcome back to the club</p>
+<body class="auth-body">
 
-            <form class="auth-form">
-                <div class="input-group-auth">
-                    <label>EMAIL OR PHONE</label>
-                    <input type="text" class="auth-input" placeholder="name@example.com">
-                </div>
-                
-                <div class="input-group-auth">
-                    <label>PASSWORD</label>
-                    <input type="password" class="auth-input" placeholder="••••••••">
-                </div>
+    <div class="auth-card">
+        <div class="auth-logo" onclick="window.location.href='index.html'" title="Return Home"></div>
 
-                <button type="submit" class="btn-auth">Login</button>
-            </form>
-
-            <div class="auth-links">
-                <a href="#">Forgot Password?</a>
-                <br><br>
-                <span>Don't have an account? <a href="register.html">Register</a></span>
-            </div>
-
-            <div class="social-login">
-                <p style="margin-bottom: 15px; font-size: 0.8rem; color: #888;">OR LOGIN WITH</p>
-                <div class="social-icons-auth">
-                    <i class="fab fa-google"></i>
-                    <i class="fab fa-apple"></i>
-                    <i class="fab fa-facebook-f"></i>
-                </div>
-            </div>
+        <div class="auth-header">
+            <h1 class="auth-title">LOGIN</h1>
         </div>
+
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="Sign In (Email or Phone)">
+            </div>
+            
+            <div class="form-group">
+                <div style="display: flex; gap: 10px;">
+                    <select class="form-input" style="width: 35%;">
+                        <option>SG (+65)</option>
+                        <option>US (+1)</option>
+                        <option>UK (+44)</option>
+                    </select>
+                    <input type="text" class="form-input" placeholder="Mobile Number" style="width: 65%;">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-input" placeholder="Password">
+            </div>
+
+            <button type="submit" class="btn-login">Login</button>
+            
+            <a href="#" class="forgot-password">Forgot Password?</a>
+        </form>
+
+        <div class="divider">OR</div>
+
+        <div class="social-login">
+            <i class="fab fa-apple social-icon"></i>
+            <i class="fab fa-facebook social-icon"></i>
+            <i class="fab fa-google social-icon"></i>
+            <i class="fab fa-windows social-icon"></i>
+        </div>
+
+        <p style="font-size: 0.9rem;">
+            Don't have an account? <a href="registration.html" style="color: var(--primary-color); font-weight: bold;">Sign Up</a>
+        </p>
     </div>
+
 </body>
 </html>
