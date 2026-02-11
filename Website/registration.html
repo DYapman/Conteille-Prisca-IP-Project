@@ -9,7 +9,7 @@
 </head>
 <body class="auth-body">
 
-    <div class="auth-card" style="max-width: 500px;">
+    <div class="auth-card register-card">
         <div class="auth-logo" onclick="window.location.href='index.html'" title="Return Home"></div>
 
         <div class="auth-header">
@@ -49,9 +49,9 @@
 
             <div class="form-group">
                 <label class="form-label">Mobile Number*</label>
-                <div style="display: flex; gap: 10px;">
-                    <input type="text" class="form-input" value="SG (+65)" readonly style="width: 30%; background: #f9f9f9;">
-                    <input type="tel" class="form-input" style="width: 70%;">
+                <div class="input-group-row">
+                    <input type="text" class="form-input input-prefix-read" value="SG (+65)" readonly>
+                    <input type="tel" class="form-input input-mobile-wide">
                 </div>
             </div>
 
@@ -78,8 +78,8 @@
             <button type="submit" class="btn-login btn-register-outline">Register</button>
         </form>
 
-        <p style="margin-top: 20px; font-size: 0.9rem;">
-            Already have an account? <a href="login.html" style="color: var(--primary-color); font-weight: bold;">Login</a>
+        <p class="text-sm-mt">
+            Already have an account? <a href="login.html" class="text-primary-bold">Login</a>
         </p>
     </div>
 
