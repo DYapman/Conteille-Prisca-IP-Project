@@ -369,7 +369,7 @@ header {
 .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 15px; font-size: 0.85rem; color: #555; text-align: left; }
 .checkbox-group input { margin-top: 3px; }
 
-/* ========================================= MEMBERSHIP / ABOUT PAGE STYLES ========================================= */
+/*  MEMBERSHIP / ABOUT PAGE STYLES  */
 
 /* --- Membership Hero Section --- */
 .membership-hero {
