@@ -723,3 +723,24 @@ header {
     .content-heading { font-size: 1.8rem; }
     .membership-hero { height: 60vh; }
 }
+
+
+.nav-logo {
+    height: 50px;  /* Adjust this value to match your other pages */
+    width: auto;   /* Maintains the logo's aspect ratio */
+    display: block;
+}
+
+
+.hero-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* This aligns everything vertically */
+    padding: 20px;
+}
+
+.nav-logo {
+    display: block; /* Removes extra space below images */
+    height: 50px;   /* distinct height to match icons */
+    width: auto;
+}
