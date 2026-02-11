@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 content.style.display = "block";
                 if(icon) icon.textContent = "-";
             }
-        });
     });
 
   /* --- COUNTDOWN TIMER --- */
@@ -162,3 +161,48 @@ startCountdown();
         // Inject the HTML into the page
         forumFeed.innerHTML = htmlContent;
     }
+    
+const registerForm = document.getElementById('registration-form');
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop the page from reloading
+
+            // 1. Collect the data from the HTML
+            const userData = {
+                "first_name": document.getElementById('firstName').value,
+                "last_name": document.getElementById('lastName').value,
+                "date_of_birth": document.getElementById('dob').value,
+                "email": document.getElementById('email').value,
+                "mobile_number": document.getElementById('mobile').value,
+                "password": document.getElementById('password').value
+            };
+
+            // 2. Send the data to RestDB
+            // REPLACE THESE VARIABLES WITH YOUR ACTUAL KEYS
+            const dbUrl = "https://contielleprisca-ad78.restdb.io/rest/app-users"; 
+            const apiKey = "698cb182bf4bcc683253e4c3"; 
+
+            fetch(dbUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-apikey": apiKey,
+                    "Cache-Control": "no-cache"
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Success:", data);
+                alert("Registration Successful!");
+                // Redirect to login page after successful save
+                window.location.href = 'login.html';
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Something went wrong. Please try again.");
+            });
+        });
+    }
+});
