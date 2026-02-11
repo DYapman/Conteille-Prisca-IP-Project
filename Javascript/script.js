@@ -91,3 +91,71 @@ function startCountdown() {
 // Start the timer when the page loads
 startCountdown();
 });
+
+/* --- 3. RANDOM FORUM POST GENERATOR --- */
+    const forumFeed = document.getElementById('forum-feed');
+
+    if (forumFeed) {
+        // A bank of watch-related topics
+        const topics = [
+            "What makes a watch feel special beyond specs?",
+            "Thoughts on the new Novus Flux trend?",
+            "Is the SeaMariner actually worth the price tag?",
+            "Help me identify my father's timepiece.",
+            "Leather vs. NATO straps for daily wear?",
+            "The debate: Swiss movement vs. Japanese precision.",
+            "Just acquired my grail watch! (Photos)",
+            "Maintenance tips for automatic calibers.",
+            "Do you think Bayside Blue should be added to colors?",
+            "Why do we still love mechanical watches in a digital age?",
+            "My watch broke during a fight, where to fix?",
+            "HELP!!! I can’t decide what color I should get"
+        
+            
+        ];
+
+        // A bank of fictional users
+        const users = [
+            { name: "MartinDLux", initial: "MDL" },
+            { name: "ChronoTrigger", initial: "CT" },
+            { name: "HorologyFan", initial: "HF" },
+            { name: "WristCheck", initial: "WC" },
+            { name: "TimeKeeper88", initial: "TK" },
+            { name: "LuxeCollector", initial: "LC" },
+            { name: "BrainOConner", initial: "BOC" },
+            { name: "JamesBond", initial: "JB" },
+            { name: "VintageSoul", initial: "VS" }
+        ];
+
+        // Function to get a random number
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Generate 3 random posts
+        let htmlContent = "";
+        
+        // We loop 3 times to create 3 posts
+        for (let i = 0; i < 3; i++) {
+            // Pick a random topic and user
+            const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+            const randomUser = users[Math.floor(Math.random() * users.length)];
+            const replies = getRandomInt(1, 45); // Random replies between 1 and 45
+            const hoursAgo = getRandomInt(1, 12); // Random time ago
+
+            // Build the HTML string (matching your existing design)
+            htmlContent += `
+                <div class="forum-post">
+                    <div class="avatar-circle">${randomUser.initial}</div>
+                    <div class="post-content">
+                        <h4>${randomTopic}</h4>
+                        <div class="post-meta">${randomUser.name} &nbsp;&nbsp; ${replies} Replies</div>
+                    </div>
+                </div>
+                <div class="post-time">Last posted ${hoursAgo} hours ago</div>
+            `;
+        }
+
+        // Inject the HTML into the page
+        forumFeed.innerHTML = htmlContent;
+    }
