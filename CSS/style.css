@@ -941,3 +941,199 @@ header {
 .badge-green { background: radial-gradient(circle, #d4af37 10%, #1a4d2e 60%); }
 .badge-red   { background: radial-gradient(circle, #d4af37 10%, #660f0f 60%); }
 .badge-gold  { background: radial-gradient(circle, #fff 10%, #d4af37 60%); }
+
+/* =========================================================
+   PAYMENT PAGE STYLES (RESPONSIVE)
+   ========================================================= */
+
+.payment-body {
+    background-color: #f9f9f9; /* Light grey bg for better contrast on desktop */
+    min-height: 100vh;
+}
+
+.payment-wrapper {
+    width: 100%;
+    /* Mobile First Default */
+    max-width: 480px; 
+    margin: 0 auto;
+    padding: 20px;
+    font-family: var(--font-sans);
+}
+
+/* --- Payment Header --- */
+.payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+.header-logo-link { flex: 1; display: flex; align-items: center; }
+.payment-logo-img { width: 50px; height: 50px; object-fit: contain; }
+
+.payment-page-title {
+    flex: 2; text-align: center; font-size: 1.1rem;
+    font-weight: 700; color: #000; margin: 0;
+}
+
+.header-bag-icon {
+    flex: 1; text-align: right; font-size: 1.2rem; color: #000;
+}
+
+/* --- Buttons & Divider --- */
+.gpay-btn {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; cursor: pointer; margin-bottom: 25px;
+    transition: background 0.3s;
+}
+.gpay-btn:hover { background-color: #333; }
+
+.payment-divider {
+    text-align: center; margin-bottom: 25px;
+    position: relative; color: #999;
+    font-size: 0.8rem; text-transform: uppercase;
+}
+.payment-divider::before, .payment-divider::after {
+    content: ""; position: absolute; top: 50%;
+    width: 40%; height: 1px; background: #e0e0e0;
+}
+.payment-divider::before { left: 0; }
+.payment-divider::after { right: 0; }
+
+/* --- Form Styles --- */
+.form-section {
+    background: #fff;
+    padding: 0; /* No padding on mobile to keep clean look */
+    margin-bottom: 25px;
+}
+
+.form-section-title {
+    font-size: 0.95rem; font-weight: 700;
+    color: #000; margin-bottom: 15px;
+}
+
+/* Input Fields */
+.pay-input {
+    width: 100%;
+    padding: 14px 15px;
+    margin-bottom: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #333;
+    outline: none;
+    background: #fff;
+    transition: border-color 0.3s;
+}
+
+.pay-input:focus { border-color: #000; }
+
+/* Side-by-Side Inputs (Mobile & Desktop) */
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+.half-width {
+    width: 50%;
+}
+
+/* --- Sidebar / Summary Styles --- */
+.checkout-sidebar {
+    margin-top: 40px;
+}
+
+.summary-card {
+    background: #fff;
+    border-radius: 12px;
+    /* On mobile, it's just plain. On desktop, it becomes a card. */
+}
+
+.summary-item-preview {
+    display: flex; justify-content: space-between;
+    font-size: 0.9rem; color: #555; margin-bottom: 15px;
+}
+
+.summary-divider {
+    border: 0; border-top: 1px solid #eee; margin: 15px 0;
+}
+
+.summary-row {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 10px;
+    font-size: 0.95rem; color: #666;
+}
+
+.summary-row.total-row {
+    margin-top: 15px; margin-bottom: 20px;
+    color: #000; font-weight: 700; font-size: 1.1rem;
+}
+
+.pay-submit-btn {
+    width: 100%;
+    background-color: #000; color: #fff;
+    border: none; border-radius: 50px;
+    padding: 16px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
+    transition: transform 0.2s;
+}
+.pay-submit-btn:hover { transform: scale(1.02); }
+
+.secure-badge {
+    text-align: center; font-size: 0.75rem; color: #888;
+    margin-top: 15px; display: flex; align-items: center;
+    justify-content: center; gap: 6px;
+}
+
+/* =========================================================
+   DESKTOP MEDIA QUERY (min-width: 900px)
+   ========================================================= */
+@media (min-width: 900px) {
+    .payment-wrapper {
+        max-width: 1100px; /* Expand container */
+        padding: 40px;
+    }
+
+    .payment-page-title {
+        font-size: 1.5rem;
+    }
+
+    /* Create 2-Column Grid */
+    .checkout-layout {
+        display: flex;
+        gap: 60px; /* Space between columns */
+        align-items: flex-start; /* Align top */
+    }
+
+    /* Left Column */
+    .checkout-main {
+        flex: 1.5; /* Takes up 60% space */
+    }
+
+    .form-section {
+        padding: 0; 
+        margin-bottom: 40px;
+    }
+
+    /* Right Column (Sticky) */
+    .checkout-sidebar {
+        flex: 1; /* Takes up 40% space */
+        margin-top: 0;
+        position: sticky;
+        top: 100px; /* Stays in view while scrolling */
+    }
+
+    .summary-card {
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Add shadow for depth */
+        border: 1px solid #eee;
+    }
+}
