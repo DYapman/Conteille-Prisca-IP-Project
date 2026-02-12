@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/* --- 7. SETTINGS & PROFILE UPDATE (FINAL FIX) --- */
+/* --- 7. SETTINGS & PROFILE UPDATE (COMPLETE) --- */
 document.addEventListener('DOMContentLoaded', () => {
     const settingsForm = document.querySelector('.settings-form');
     if (!settingsForm) return;
@@ -517,8 +517,19 @@ document.addEventListener('DOMContentLoaded', () => {
             updateBtn.disabled = false;
         }
     });
-});
 
+    // 4. Handle Logout
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            if(confirm("Are you sure you want to log out?")) {
+                localStorage.removeItem('currentUser'); // Clear the session
+                localStorage.removeItem('contielle_cart'); // Optional: Clear cart on logout
+                window.location.href = 'login.html'; // Redirect to login
+            }
+        });
+    }
+});
 
 /* =========================================================
    8. PROFILE PAGE LOGIC (PERSONALIZATION)
@@ -547,7 +558,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const lastInitial = user.LastName ? user.LastName.charAt(0).toUpperCase() : "";
     document.getElementById('profile-initials').innerText = firstInitial + lastInitial;
 
-    // 3. Generate "Random" Badges based on User ID
+    // ---------------------------------------------------------
+    // GENERATE CONSISTENT "RANDOM" DATA FROM USER ID
+    // ---------------------------------------------------------
     let idSum = 0;
     if(user._id) {
         for(let i = 0; i < user._id.length; i++) {
@@ -557,9 +570,11 @@ document.addEventListener('DOMContentLoaded', () => {
         idSum = Math.floor(Math.random() * 100);
     }
 
-    const badgeCount = idSum % 5; 
+    // ---------------------------------------------------------
+    // A. BADGES LOGIC
+    // ---------------------------------------------------------
+    const badgeCount = idSum % 5; // Result is 0, 1, 2, 3, or 4
 
-    // Define Available Badges
     const allBadges = [
         { name: "Lapis Rank", colorClass: "badge-navy", img: "../Photos/bluefish.png" }, 
         { name: "Jade Rank", colorClass: "badge-green", img: "../Photos/greenfish.png" }, 
@@ -568,15 +583,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const earnedBadges = allBadges.slice(0, badgeCount);
-
-    // 4. Render Badges (ONLY Full Badges in Badge Tab now)
     const fullContainer = document.getElementById('full-badges-list');
 
     if (earnedBadges.length === 0) {
         fullContainer.innerHTML = '<div style="padding:20px; color:#777;">No badges earned yet.</div>';
     } else {
+        fullContainer.innerHTML = ''; // Clear existing content
         earnedBadges.forEach(badge => {
-            // Render Full Badge (Tab)
             const fullDiv = document.createElement('div');
             fullDiv.className = 'badge-card';
             fullDiv.innerHTML = `
@@ -585,10 +598,56 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="badge-info">
                     <div class="badge-title">${badge.name}</div>
-                    <div class="badge-desc"></div>
+                    <div class="badge-desc">Awarded for community contribution</div>
                 </div>
             `;
             fullContainer.appendChild(fullDiv);
         });
     }
+
+    // ---------------------------------------------------------
+    // B. CONNECTIONS LOGIC (NEW)
+    // ---------------------------------------------------------
+    
+    // 1. Pool of potential connections
+    const dummyNames = [
+        "Adilah Uo", "Aryton Zola", "Madeline Swann", "June Vargas",
+        "James Bond", "Lara Croft", "Tony Stark", "Bruce Wayne",
+        "Peter Parker", "Diana Prince", "Clark Kent", "Natasha Romanoff",
+        "Steve Rogers", "Wanda Maximoff", "Stephen Strange", "T'Challa"
+    ];
+
+    // 2. Determine Number of Connections (between 2 and 8)
+    // We use a different modifier so it doesn't match the badge count exactly
+    const connectionCount = (idSum % 7) + 2; 
+
+    // 3. Update Header Count
+    document.getElementById('connection-count').innerText = `${connectionCount} Connections`;
+
+    // 4. Select Unique Names
+    // We use the 'idSum' to pick a starting point in the list, then skip through it
+    let selectedConnections = [];
+    for(let i = 0; i < connectionCount; i++) {
+        // Simple pseudo-random index based on ID and iteration
+        const index = (idSum + (i * 3)) % dummyNames.length;
+        selectedConnections.push(dummyNames[index]);
+    }
+
+    // 5. Render Connections
+    const connContainer = document.getElementById('connections-container');
+    connContainer.innerHTML = ''; // Clear loading state
+
+    selectedConnections.forEach(name => {
+        // Extract Initials
+        const parts = name.split(' ');
+        const initials = parts[0][0] + (parts[1] ? parts[1][0] : '');
+
+        const card = document.createElement('div');
+        card.className = 'connection-card';
+        card.innerHTML = `
+            <div class="conn-avatar">${initials}</div>
+            <span class="conn-name">${name}</span>
+        `;
+        connContainer.appendChild(card);
+    });
 });
