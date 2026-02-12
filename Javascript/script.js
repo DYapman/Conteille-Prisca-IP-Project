@@ -548,54 +548,44 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('profile-initials').innerText = firstInitial + lastInitial;
 
     // 3. Generate "Random" Badges based on User ID
-    // This ensures the badge count is consistent for the user but different across users.
-    
-    // Create a simple number from the user ID string
     let idSum = 0;
     if(user._id) {
         for(let i = 0; i < user._id.length; i++) {
             idSum += user._id.charCodeAt(i);
         }
     } else {
-        idSum = Math.floor(Math.random() * 100); // Fallback if no ID
+        idSum = Math.floor(Math.random() * 100);
     }
 
-    // Determine number of badges (Max 4)
-    // We use modulo 5 so result is 0, 1, 2, 3, or 4
     const badgeCount = idSum % 5; 
 
-    // Define Available Badges (Matching the image colors)
+    // Define Available Badges
     const allBadges = [
-        { name: "Lapis Rank", colorClass: "badge-navy", img: "../Photos/bluefish.png" }, // Navy
-        { name: "Jade Rank", colorClass: "badge-green", img: "../Photos/greenfish.png" }, // Green
-        { name: "Ruby Rank", colorClass: "badge-red", img: "../Photos/redfish.png" },   // Burgundy
-        { name: "Citrine Rank", colorClass: "badge-gold", img: "../Photos/yellowfish.png" } // Yellow
+        { name: "Lapis Rank", colorClass: "badge-navy", img: "../Photos/bluefish.png" }, 
+        { name: "Jade Rank", colorClass: "badge-green", img: "../Photos/greenfish.png" }, 
+        { name: "Ruby Rank", colorClass: "badge-red", img: "../Photos/redfish.png" },   
+        { name: "Citrine Rank", colorClass: "badge-gold", img: "../Photos/yellowfish.png" } 
     ];
 
     const earnedBadges = allBadges.slice(0, badgeCount);
 
-    // 4. Render Badges
-    const miniContainer = document.getElementById('mini-badges-container');
+    // 4. Render Badges (ONLY Full Badges in Badge Tab now)
     const fullContainer = document.getElementById('full-badges-list');
 
     if (earnedBadges.length === 0) {
         fullContainer.innerHTML = '<div style="padding:20px; color:#777;">No badges earned yet.</div>';
-        miniContainer.style.display = 'none';
     } else {
         earnedBadges.forEach(badge => {
-            // Render Mini Badge (Footer) - Using CSS gradient class as fallback for image
-            const miniDiv = document.createElement('div');
-            miniDiv.className = `mini-badge ${badge.colorClass}`;
-            miniContainer.appendChild(miniDiv);
-
             // Render Full Badge (Tab)
             const fullDiv = document.createElement('div');
             fullDiv.className = 'badge-card';
             fullDiv.innerHTML = `
-                <div class="badge-img-large ${badge.colorClass}"></div>
+                <div class="badge-img-large ${badge.colorClass}" 
+                     style="background-image: url('${badge.img}'); background-size: cover; background-position: center;">
+                </div>
                 <div class="badge-info">
                     <div class="badge-title">${badge.name}</div>
-                    <div class="badge-desc">Awarded for community contribution</div>
+                    <div class="badge-desc"></div>
                 </div>
             `;
             fullContainer.appendChild(fullDiv);
