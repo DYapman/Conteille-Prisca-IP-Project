@@ -647,3 +647,110 @@ header {
         padding: 20px;
     }
 }
+
+/* --- NEW SPLIT SCREEN SHOWCASE --- */
+.split-showcase {
+    position: relative;
+    width: 100%;
+    /* Adjusted to 70vh so it sits nicely under the hero image without forcing too much scroll */
+    height: 70vh; 
+    min-height: 500px; /* Ensures it never gets too small on small screens */
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden;
+    margin-top: 0; /* Ensures it connects directly to the image above */
+}
+
+.split-panel {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: flex 0.5s ease; /* Smooth size transition */
+}
+
+/* Background Image styling */
+.split-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+    z-index: 0;
+}
+
+/* Dark overlay */
+.split-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.5s ease;
+    z-index: 1;
+}
+
+/* Text Content */
+.split-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+}
+
+.split-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.split-subtitle {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.btn-split {
+    padding: 12px 30px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-split:hover {
+    background: white;
+    color: black;
+}
+
+/* --- DESKTOP HOVER EFFECTS --- */
+@media (min-width: 768px) {
+    .split-showcase {
+        flex-direction: row; /* Side by side on desktop */
+    }
+
+    /* Expanding effect: Hovered side grows larger */
+    .split-panel:hover {
+        flex: 1.5; 
+    }
+
+    /* Zoom image effect */
+    .split-panel:hover .split-bg {
+        transform: scale(1.1);
+    }
+
+    /* Brighten overlay on hover */
+    .split-panel:hover .split-overlay {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}

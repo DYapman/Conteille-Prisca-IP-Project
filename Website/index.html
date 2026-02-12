@@ -15,22 +15,32 @@
     </header>
 
     <div class="page-container">
-        <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80" alt="Bronze Watch" class="hero-image">
+    <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80" alt="Bronze Watch" class="hero-image">
 
-        <div class="collection-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=600&q=80" alt="Sea Mariner">
-                <h2>Sea Mariner</h2>
-                <a href="seamariner.html" class="btn-outline">Discover The Collection</a>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80" alt="Novus Flux">
-                <h2>Novus Flux</h2>
-                <a href="novus-flux.html" class="btn-outline">Discover The Collection</a>
+    <div class="split-showcase">
+        
+        <div class="split-panel split-left" onclick="window.location.href='seamariner.html'">
+            <div class="split-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=800&q=80" alt="Sea Mariner" class="split-bg">
+            <div class="split-content">
+                <h2 class="split-title">Sea Mariner</h2>
+                <p class="split-subtitle">The Icon of the Deep</p>
+                <a href="seamariner.html" class="btn-split">Explore</a>
             </div>
         </div>
-    </div> 
+
+        <div class="split-panel split-right" onclick="window.location.href='novus-flux.html'">
+            <div class="split-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80" alt="Novus Flux" class="split-bg">
+            <div class="split-content">
+                <h2 class="split-title">Novus Flux</h2>
+                <p class="split-subtitle">The Future of Time</p>
+                <a href="novus-flux.html" class="btn-split">Explore</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
     <footer class="site-footer">
         <label class="newsletter-label">Subscribe to our newsletter</label>
         <div class="input-group">
