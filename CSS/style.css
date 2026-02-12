@@ -1160,17 +1160,18 @@ header {
 }
 
 .rank-icon-wrapper {
-    margin-bottom: 30px; /* Increased margin for better spacing */
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
 }
 
-/* NEW: Style for the GIF - MADE BIGGER */
+/* NEW: Style for the GIF */
 .rank-header-gif {
-    width: 350px;       /* Increased from 150px to 350px */
-    max-width: 100%;    /* Ensures it doesn't overflow on mobile */
+    width: 150px;       /* Adjustable based on gif resolution */
     height: auto;
     object-fit: contain;
+    /* Optional: If your gif has a white background and you want it dark: */
+    /* filter: invert(1); */ 
 }
 
 .rank-main-title {
@@ -1196,7 +1197,7 @@ header {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 80px; /* Space between ranks */
     padding: 0 20px;
 }
 
@@ -1228,10 +1229,10 @@ header {
 }
 
 /* Specific Colors for Rank Names */
-.lapis-text { color: #4169E1; }
-.jade-text { color: #50C878; }
-.ruby-text { color: #E0115F; }
-.citrine-text { color: #DAA520; }
+.lapis-text { color: #4169E1; } /* Royal Blue */
+.jade-text { color: #50C878; }  /* Emerald Green */
+.ruby-text { color: #E0115F; }  /* Ruby Red */
+.citrine-text { color: #DAA520; } /* Goldenrod */
 
 .rank-points {
     font-family: var(--font-sans);
