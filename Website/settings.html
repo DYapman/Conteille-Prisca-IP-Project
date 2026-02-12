@@ -32,29 +32,30 @@
         </div>
 
         <form class="settings-form">
-            
+            <input type="hidden" id="settings-id">
+
             <div class="settings-input-group">
                 <label>Mobile Number</label>
-                <div class="settings-input-box">(Number)</div>
+                <input type="number" id="settings-mobile" class="settings-input-box" placeholder="Enter mobile number">
             </div>
 
             <div class="settings-input-group">
                 <label>Email Address</label>
-                <div class="settings-input-box">(email address)</div>
+                <input type="email" id="settings-email" class="settings-input-box" placeholder="Enter email">
             </div>
 
             <div class="settings-input-group">
                 <label>Password</label>
-                <div class="settings-input-box">Password</div>
+                <input type="text" id="settings-pass" class="settings-input-box" placeholder="Enter new password">
             </div>
 
             <div class="settings-input-group">
                 <label>Date of Birth</label>
-                <div class="settings-input-box">00/00/0000</div>
+                <input type="date" id="settings-dob" class="settings-input-box">
             </div>
 
             <div class="form-footer">
-                <button type="button" class="update-btn">Update Profile</button>
+                <button type="submit" class="update-btn">Update Profile</button>
             </div>
 
         </form>

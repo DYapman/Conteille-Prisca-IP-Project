@@ -150,17 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileEl = document.getElementById('mobile');
         const passEl = document.getElementById('password');
         const confirmPassEl = document.getElementById('confirm-password');
+        const birthdateEl = document.getElementById('birthdate');
 
         // Safety check
         if (!firstNameEl || !lastNameEl || !emailEl || !mobileEl || !passEl || !confirmPassEl) {
-            console.error('Missing elements:', {
-                firstNameEl,
-                lastNameEl,
-                emailEl,
-                mobileEl,
-                passEl,
-                confirmPassEl
-            });
             alert('Form error. Please refresh the page.');
             return;
         }
@@ -177,18 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const birthdateEl = document.getElementById('birthdate');
-
-const userData = {
-    email: email,
-    FirstName: firstName,
-    LastName: lastName,
-    mobile_number: Number(mobile),
-    password: password,
-    birthdate: birthdateEl.value || null
-};
-
-     
+        const userData = {
+            email: email,
+            FirstName: firstName,
+            LastName: lastName,
+            mobile_number: Number(mobile),
+            password: password,
+            birthdate: birthdateEl ? (birthdateEl.value || null) : null
+        };
 
         const dbUrl = 'https://contielleprisca-ad78.restdb.io/rest/app-users';
         const apiKey = '698cb182bf4bcc683253e4c3';
@@ -241,8 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
 
     if (loginForm) {
-        console.log("Login Script Loaded"); // This will show in Console (F12) if it works
-
         loginForm.addEventListener('submit', async function(e) {
             e.preventDefault(); 
 
@@ -288,6 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const user = users[0];
                     if (user.password === password) {
                         // Success!
+                        // SAVE USER TO SESSION BEFORE REDIRECTING
+                        localStorage.setItem('currentUser', JSON.stringify(user)); 
                         window.location.href = 'index.html';
                     } else {
                         errorMsg.innerText = 'Incorrect password.';
@@ -308,16 +297,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --- 6. SHOPPING CART LOGIC --- */
-
-// Initialize Cart from LocalStorage
 const cartKey = 'contielle_cart';
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
-// Global functions for inline HTML buttons (Remove/Quantity)
 window.cartFunctions = {
     updateQty: (index, change) => {
         if (cart[index].qty + change <= 0) {
-            cart.splice(index, 1); // Remove if qty is 0
+            cart.splice(index, 1); 
         } else {
             cart[index].qty += change;
         }
@@ -333,34 +319,27 @@ window.cartFunctions = {
             return;
         }
         alert(`Proceeding to checkout. Total: $${getCartTotal().toLocaleString()}`);
-        // Redirect to a checkout page if you have one
     }
 };
 
-// Helper: Save to storage and re-render
 function updateCartStorage() {
     localStorage.setItem(cartKey, JSON.stringify(cart));
     renderCart();
 }
 
-// Helper: Calculate Total
 function getCartTotal() {
     return cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
 }
 
-// Core Function: Render the Cart HTML
 function renderCart() {
     const cartContent = document.querySelector('.cart-content');
     if(!cartContent) return;
 
-    // Calculate stats
     const total = getCartTotal();
     const count = cart.reduce((acc, item) => acc + item.qty, 0);
 
-    // 1. Build Header
     let html = `<div style="font-weight:bold; margin-bottom:20px;">YOUR CART (${count})</div>`;
     
-    // 2. Build Items
     if (cart.length === 0) {
         html += `<div style="text-align:center; padding:20px; color:#666;">Your cart is empty.</div>`;
     } else {
@@ -382,7 +361,6 @@ function renderCart() {
         });
     }
 
-    // 3. Build Footer
     html += `
     <div class="delivery-box" style="background: #f9f9f9; padding: 10px; font-size: 0.9rem; text-align: center; margin-top: 15px;">Delivery within 48 hours</div>
     <div style="margin: 15px 0; font-weight: bold; font-size: 1.1rem; display: flex; justify-content: space-between;">
@@ -396,7 +374,6 @@ function renderCart() {
     cartContent.innerHTML = html;
 }
 
-// Function: Add Item to Cart
 function addItemToCart(product) {
     const existing = cart.find(x => x.name === product.name);
     if(existing) {
@@ -404,10 +381,7 @@ function addItemToCart(product) {
     } else {
         cart.push({ ...product, qty: 1 });
     }
-    
     updateCartStorage();
-    
-    // Auto-open cart menu
     const cartMenu = document.getElementById('cart-menu');
     const utilityMenu = document.getElementById('utility-menu');
     if(cartMenu) {
@@ -416,38 +390,131 @@ function addItemToCart(product) {
     }
 }
 
-// Setup Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-    renderCart(); // Render cart on page load
+    renderCart();
 
-    // 1. Logic for SINGLE PRODUCT PAGES (Sea Mariner / Novus Flux)
     const productBtn = document.querySelector('.product-info .btn-primary');
     if(productBtn) {
         productBtn.addEventListener('click', () => {
             const title = document.querySelector('.product-title').innerText;
-            // Clean price string: Remove "SGD", "$", and commas to get a pure number
             const priceText = document.querySelector('.price').innerText; 
             const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
             const img = document.querySelector('.product-images img').src;
-            
             addItemToCart({ name: title, price: price, img: img });
         });
     }
 
-    // 2. Logic for ACCESSORIES PAGE
     const accButtons = document.querySelectorAll('.acc-btn');
     accButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const container = e.target.closest('.acc-item');
             const title = container.querySelector('.acc-name').innerText;
             const img = container.querySelector('img').src;
-            
-            // Note: Since accessories.html didn't have prices in the text, 
-            // we check for a data-price attribute, or default to $150.
             const priceAttr = btn.getAttribute('data-price');
             const price = priceAttr ? parseFloat(priceAttr) : 150;
-            
             addItemToCart({ name: title, price: price, img: img });
         });
+    });
+});
+
+/* --- 7. SETTINGS & PROFILE UPDATE (FINAL FIX) --- */
+document.addEventListener('DOMContentLoaded', () => {
+    const settingsForm = document.querySelector('.settings-form');
+    if (!settingsForm) return;
+
+    // 1. Check if user is logged in
+    const storedUser = localStorage.getItem('currentUser');
+    if (!storedUser) {
+        alert("You must be logged in to edit settings.");
+        window.location.href = 'login.html';
+        return;
+    }
+
+    let user;
+    try {
+        user = JSON.parse(storedUser);
+    } catch (e) {
+        localStorage.removeItem('currentUser');
+        window.location.href = 'login.html';
+        return;
+    }
+    
+    // Check for ID
+    if (!user._id) {
+        alert("System Error: User ID is missing in the session. Please Log Out and Log In again to fix this.");
+        return;
+    }
+
+    // 2. Populate fields
+    const idInput = document.getElementById('settings-id');
+    const mobileInput = document.getElementById('settings-mobile');
+    const emailInput = document.getElementById('settings-email');
+    const passInput = document.getElementById('settings-pass');
+    const dobInput = document.getElementById('settings-dob');
+    
+    if (idInput) idInput.value = user._id;
+    if (mobileInput) mobileInput.value = user.mobile_number || '';
+    if (emailInput) emailInput.value = user.email || '';
+    if (passInput) passInput.value = user.password || '';
+    if (dobInput) dobInput.value = user.birthdate ? user.birthdate.split('T')[0] : ''; // Format date for input
+
+    // Update Header
+    const headerName = document.querySelector('.profile-header h1');
+    const headerId = document.querySelector('.profile-header .member-id');
+    if(headerName) headerName.textContent = (user.FirstName || 'User') + ' ' + (user.LastName || '');
+    if(headerId) headerId.textContent = 'Member ID: ' + user._id.substr(-6).toUpperCase();
+
+    // 3. Handle Update
+    settingsForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const updateBtn = settingsForm.querySelector('.update-btn');
+        const originalText = updateBtn.innerText;
+        updateBtn.innerText = "Updating...";
+        updateBtn.disabled = true;
+
+        const dbUrl = 'https://contielleprisca-ad78.restdb.io/rest/app-users';
+        const apiKey = '698cb182bf4bcc683253e4c3';
+        const userId = user._id;
+
+        // Data to send
+        const updatedData = {
+            mobile_number: Number(mobileInput.value),
+            email: emailInput.value,
+            password: passInput.value,
+            birthdate: dobInput.value || null
+        };
+
+        try {
+            // Using PATCH instead of PUT (Safer for partial updates)
+            const response = await fetch(`${dbUrl}/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-apikey': apiKey,
+                    'Cache-Control': 'no-cache'
+                },
+                body: JSON.stringify(updatedData)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                const newUserObj = { ...user, ...responseData };
+                localStorage.setItem('currentUser', JSON.stringify(newUserObj));
+                alert("Profile updated successfully!");
+                location.reload(); 
+            } else {
+                const errData = await response.json();
+                console.error("Server Error Data:", errData);
+                alert("Update failed: " + (errData.message || "Unknown error"));
+            }
+
+        } catch (error) {
+            console.error("FULL NETWORK ERROR:", error);
+            alert("Network Error: The database blocked the request.\n\nCHECK THIS: Go to RestDB > Settings > API Keys. Make sure your key has 'PUT' and 'PATCH' permissions checked (not just GET).");
+        } finally {
+            updateBtn.innerText = originalText;
+            updateBtn.disabled = false;
+        }
     });
 });
