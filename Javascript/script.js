@@ -318,7 +318,8 @@ window.cartFunctions = {
             alert("Your cart is empty!");
             return;
         }
-        alert(`Proceeding to checkout. Total: $${getCartTotal().toLocaleString()}`);
+        // REDIRECT TO PAYMENT PAGE
+        window.location.href = 'payment.html'; 
     }
 };
 
@@ -649,5 +650,95 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="conn-name">${name}</span>
         `;
         connContainer.appendChild(card);
+    });
+});
+
+
+/* =========================================================
+   9. PAYMENT PAGE LOGIC (Connect Cart to Payment)
+   ========================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Check if we are on the payment page
+    const paymentPage = document.querySelector('.payment-body');
+    if (!paymentPage) return;
+
+    // 2. Retrieve Cart
+    const cart = JSON.parse(localStorage.getItem('contielle_cart')) || [];
+    
+    // 3. Kick user out if cart is empty
+    if (cart.length === 0) {
+        alert("Your cart is empty. Redirecting to shop.");
+        window.location.href = 'index.html';
+        return;
+    }
+
+    // 4. Get Elements to Update
+    const summaryCard = document.querySelector('.summary-card');
+    const subtotalEl = document.querySelector('.summary-row .summary-value'); 
+    const totalEl = document.querySelector('.total-row .summary-total');
+    const payBtn = document.querySelector('.pay-submit-btn');
+    
+    // 5. Clear the "Static" dummy item from HTML
+    const existingItems = document.querySelectorAll('.summary-item-preview');
+    existingItems.forEach(el => el.remove());
+
+    // 6. Loop through Cart & Create Items
+    // We insert a container after the "Order Summary" title
+    const title = summaryCard.querySelector('h3');
+    const itemsContainer = document.createElement('div');
+    itemsContainer.className = 'summary-items-list';
+    
+    // Insert the container after the title
+    title.parentNode.insertBefore(itemsContainer, title.nextSibling);
+
+    let totalCost = 0;
+
+    cart.forEach(item => {
+        const itemTotal = item.price * item.qty;
+        totalCost += itemTotal;
+
+        const itemRow = document.createElement('div');
+        itemRow.className = 'summary-item-preview';
+        
+        // Add item HTML
+        itemRow.innerHTML = `
+            <div class="item-name">
+                ${item.name} 
+                <span style="font-size:0.8em; color:#666; margin-left:5px;">(x${item.qty})</span>
+            </div>
+            <div class="item-price">S$${itemTotal.toLocaleString()}</div>
+        `;
+        itemsContainer.appendChild(itemRow);
+    });
+
+    // 7. Update Totals on Screen
+    const formattedTotal = `S$${totalCost.toLocaleString()}`;
+    
+    // Update Subtotal (First summary-value)
+    if(subtotalEl) subtotalEl.innerText = formattedTotal;
+    
+    // Update Total (Total-row summary-total)
+    if(totalEl) totalEl.innerText = formattedTotal;
+    
+    // Update Button Text
+    if(payBtn) payBtn.innerText = `Pay ${formattedTotal}`;
+
+    // 8. Handle "Pay" Button Click
+    payBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Stop form from refreshing page
+        
+        // Basic Validation (Check if email is filled)
+        const emailInput = document.querySelector('.pay-input[type="email"]');
+        if(emailInput && emailInput.value === "") {
+            alert("Please enter your email address.");
+            return;
+        }
+
+        // Success Simulation
+        alert(`Payment of ${formattedTotal} Successful!\nThank you for your purchase.`);
+        
+        // Clear Cart & Redirect
+        localStorage.removeItem('contielle_cart'); 
+        window.location.href = 'index.html';
     });
 });
