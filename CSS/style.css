@@ -729,8 +729,9 @@ header {
 }
 
 .btn-split:hover {
-    background: white;
-    color: black;
+    background: #1a2238;
+    color: #d4af37;;
+ 
 }
 
 /* --- DESKTOP HOVER EFFECTS --- */
@@ -752,5 +753,53 @@ header {
     /* Brighten overlay on hover */
     .split-panel:hover .split-overlay {
         background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* --- TECHNICAL DATA SPECS STYLING --- */
+.tech-specs-list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between; /* Pushes label to left, value to right */
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0; /* The thin line separator */
+    font-size: 0.9rem;
+}
+
+/* Remove border from the very last row for a cleaner look */
+.spec-row:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary-color); /* Uses your Navy Blue */
+    letter-spacing: 0.5px;
+    width: 40%; /* Ensures label takes up enough space */
+}
+
+.spec-value {
+    text-align: right;
+    color: #555;
+    width: 60%;
+    line-height: 1.4;
+}
+
+/* Mobile Tweak: Stack them if screen is very small */
+@media (max-width: 400px) {
+    .spec-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .spec-label, .spec-value {
+        width: 100%;
+        text-align: left;
     }
 }
