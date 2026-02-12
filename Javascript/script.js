@@ -306,3 +306,148 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/* --- 6. SHOPPING CART LOGIC --- */
+
+// Initialize Cart from LocalStorage
+const cartKey = 'contielle_cart';
+let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+// Global functions for inline HTML buttons (Remove/Quantity)
+window.cartFunctions = {
+    updateQty: (index, change) => {
+        if (cart[index].qty + change <= 0) {
+            cart.splice(index, 1); // Remove if qty is 0
+        } else {
+            cart[index].qty += change;
+        }
+        updateCartStorage();
+    },
+    removeItem: (index) => {
+        cart.splice(index, 1);
+        updateCartStorage();
+    },
+    checkout: () => {
+        if(cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+        alert(`Proceeding to checkout. Total: $${getCartTotal().toLocaleString()}`);
+        // Redirect to a checkout page if you have one
+    }
+};
+
+// Helper: Save to storage and re-render
+function updateCartStorage() {
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+    renderCart();
+}
+
+// Helper: Calculate Total
+function getCartTotal() {
+    return cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+}
+
+// Core Function: Render the Cart HTML
+function renderCart() {
+    const cartContent = document.querySelector('.cart-content');
+    if(!cartContent) return;
+
+    // Calculate stats
+    const total = getCartTotal();
+    const count = cart.reduce((acc, item) => acc + item.qty, 0);
+
+    // 1. Build Header
+    let html = `<div style="font-weight:bold; margin-bottom:20px;">YOUR CART (${count})</div>`;
+    
+    // 2. Build Items
+    if (cart.length === 0) {
+        html += `<div style="text-align:center; padding:20px; color:#666;">Your cart is empty.</div>`;
+    } else {
+        cart.forEach((item, index) => {
+            html += `
+            <div class="cart-item" style="display: flex; gap: 15px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                <img src="${item.img}" alt="${item.name}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
+                <div style="flex: 1;">
+                    <div style="font-weight: 500; margin-bottom: 5px;">${item.name}</div>
+                    <div class="qty-selector" style="display: flex; align-items: center; gap: 5px;">
+                        <button class="qty-btn" onclick="window.cartFunctions.updateQty(${index}, -1)" style="width:25px; height:25px;">-</button>
+                        <input class="qty-input" value="${item.qty}" readonly style="width: 30px; text-align: center; border: 1px solid #ddd;">
+                        <button class="qty-btn" onclick="window.cartFunctions.updateQty(${index}, 1)" style="width:25px; height:25px;">+</button>
+                    </div>
+                    <div class="cart-price" style="margin-top: 5px; font-weight: bold;">$${(item.price * item.qty).toLocaleString()}</div>
+                </div>
+                <button onclick="window.cartFunctions.removeItem(${index})" style="background: none; border: none; color: #ff4444; font-size: 1.2rem; cursor: pointer; height: fit-content;">&times;</button>
+            </div>`;
+        });
+    }
+
+    // 3. Build Footer
+    html += `
+    <div class="delivery-box" style="background: #f9f9f9; padding: 10px; font-size: 0.9rem; text-align: center; margin-top: 15px;">Delivery within 48 hours</div>
+    <div style="margin: 15px 0; font-weight: bold; font-size: 1.1rem; display: flex; justify-content: space-between;">
+        <span>Total:</span>
+        <span>SGD $${total.toLocaleString()}</span>
+    </div>
+    <div class="cart-footer">
+        <button class="checkout-btn" onclick="window.cartFunctions.checkout()" style="width: 100%; padding: 12px; background: #000; color: #fff; border: none; font-weight: bold; cursor: pointer;">CHECKOUT</button>
+    </div>`;
+
+    cartContent.innerHTML = html;
+}
+
+// Function: Add Item to Cart
+function addItemToCart(product) {
+    const existing = cart.find(x => x.name === product.name);
+    if(existing) {
+        existing.qty++;
+    } else {
+        cart.push({ ...product, qty: 1 });
+    }
+    
+    updateCartStorage();
+    
+    // Auto-open cart menu
+    const cartMenu = document.getElementById('cart-menu');
+    const utilityMenu = document.getElementById('utility-menu');
+    if(cartMenu) {
+        cartMenu.classList.add('active');
+        if(utilityMenu) utilityMenu.classList.remove('active');
+    }
+}
+
+// Setup Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    renderCart(); // Render cart on page load
+
+    // 1. Logic for SINGLE PRODUCT PAGES (Sea Mariner / Novus Flux)
+    const productBtn = document.querySelector('.product-info .btn-primary');
+    if(productBtn) {
+        productBtn.addEventListener('click', () => {
+            const title = document.querySelector('.product-title').innerText;
+            // Clean price string: Remove "SGD", "$", and commas to get a pure number
+            const priceText = document.querySelector('.price').innerText; 
+            const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+            const img = document.querySelector('.product-images img').src;
+            
+            addItemToCart({ name: title, price: price, img: img });
+        });
+    }
+
+    // 2. Logic for ACCESSORIES PAGE
+    const accButtons = document.querySelectorAll('.acc-btn');
+    accButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const container = e.target.closest('.acc-item');
+            const title = container.querySelector('.acc-name').innerText;
+            const img = container.querySelector('img').src;
+            
+            // Note: Since accessories.html didn't have prices in the text, 
+            // we check for a data-price attribute, or default to $150.
+            const priceAttr = btn.getAttribute('data-price');
+            const price = priceAttr ? parseFloat(priceAttr) : 150;
+            
+            addItemToCart({ name: title, price: price, img: img });
+        });
+    });
+});
