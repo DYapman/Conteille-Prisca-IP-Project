@@ -803,3 +803,141 @@ header {
         text-align: left;
     }
 }
+
+
+
+/* =========================================================
+   PROFILE PAGE STYLES (New)
+   ========================================================= */
+
+.profile-page {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px 20px 80px; /* Extra bottom padding */
+    min-height: 80vh;
+}
+
+/* Header Section */
+.profile-hero { margin-bottom: 40px; }
+
+.profile-avatar-large {
+    width: 100px; height: 100px;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    border-radius: 50%;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.profile-name {
+    font-family: var(--font-sans);
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.profile-stats {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+.profile-stats .separator { margin: 0 10px; color: #ccc; }
+
+/* Tabs Navigation */
+.profile-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    /* Clean layout without borders like the image */
+}
+
+.tab-btn {
+    background: none; border: none;
+    font-size: 0.9rem; font-weight: bold;
+    color: #999; cursor: pointer;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.tab-btn.active {
+    color: #000;
+    /* Optional: underline active tab */
+    /* border-bottom: 2px solid #000; */
+}
+
+/* Content Panes */
+.tab-pane { display: none; animation: fadeIn 0.4s ease; }
+.tab-pane.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 1. Forum / Empty State */
+.empty-state-box {
+    border: 1px solid #333;
+    padding: 30px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+}
+
+/* Mini Badges Footer (Forum Tab) */
+.mini-badge-footer {
+    display: flex; justify-content: center; gap: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.mini-badge {
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    background-size: cover;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 2. Connections List */
+.connections-list { display: flex; flex-direction: column; gap: 10px; }
+
+.connection-card {
+    display: flex; align-items: center; gap: 20px;
+    background: #fcfcfc;
+    padding: 15px 25px;
+    border-radius: 50px; /* Pill shape */
+}
+
+.conn-avatar {
+    width: 40px; height: 40px;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: bold;
+}
+
+.conn-name { font-weight: 500; font-size: 0.9rem; color: #333; }
+
+/* 3. Badges List */
+.badge-card {
+    display: flex; align-items: center; gap: 20px;
+    background: #fcfcfc;
+    padding: 15px 25px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+.badge-img-large {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.badge-info { text-align: left; }
+.badge-title { font-weight: bold; font-size: 0.95rem; color: #333; }
+.badge-desc { font-size: 0.8rem; color: #777; }
+
+/* Badge Colors (CSS placeholders if images fail) */
+.badge-navy { background: radial-gradient(circle, #d4af37 10%, #1a2238 60%); }
+.badge-green { background: radial-gradient(circle, #d4af37 10%, #1a4d2e 60%); }
+.badge-red   { background: radial-gradient(circle, #d4af37 10%, #660f0f 60%); }
+.badge-gold  { background: radial-gradient(circle, #fff 10%, #d4af37 60%); }
