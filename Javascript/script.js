@@ -724,6 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(payBtn) payBtn.innerText = `Pay ${formattedTotal}`;
 
     // 8. Handle "Pay" Button Click
+    // 8. Handle "Pay" Button Click
     payBtn.addEventListener('click', (e) => {
         e.preventDefault(); // Stop form from refreshing page
         
@@ -734,11 +735,31 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Success Simulation
-        alert(`Payment of ${formattedTotal} Successful!\nThank you for your purchase.`);
+        // --- NEW LOTTIE LOGIC ---
+        const overlay = document.getElementById('payment-success-overlay');
         
-        // Clear Cart & Redirect
-        localStorage.removeItem('contielle_cart'); 
-        window.location.href = 'index.html';
+        if(overlay) {
+            // 1. Show the overlay
+            overlay.classList.add('active');
+            
+            // 2. Play the animation (optional safety check ensures it plays from start)
+            const player = overlay.querySelector('lottie-player');
+            if(player) {
+                player.stop();
+                player.play();
+            }
+
+            // 3. Wait 3 seconds, then clear cart and redirect
+            setTimeout(() => {
+                localStorage.removeItem('contielle_cart'); 
+                window.location.href = 'index.html';
+            }, 3000);
+            
+        } else {
+            // Fallback if overlay is missing
+            alert(`Payment of ${formattedTotal} Successful!`);
+            localStorage.removeItem('contielle_cart'); 
+            window.location.href = 'index.html';
+        }
     });
 });

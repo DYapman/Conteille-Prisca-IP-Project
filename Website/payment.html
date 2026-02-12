@@ -6,6 +6,7 @@
     <title>Payment - Contielle Prisca</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body class="payment-body">
 
@@ -97,5 +98,19 @@
     </div>
 
     <script src="../Javascript/script.js"></script>
+
+    <div id="payment-success-overlay" class="success-overlay">
+    <div class="success-content">
+        <lottie-player 
+            src="../Lottie/success confetti.json" 
+            background="transparent" 
+            speed="1" 
+            style="width: 300px; height: 300px;" 
+            autoplay>
+        </lottie-player>
+        <h2 class="success-text">Payment Successful!</h2>
+        <p>Redirecting you home...</p>
+    </div>
+</div>
 </body>
 </html>
