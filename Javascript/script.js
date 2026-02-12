@@ -235,3 +235,74 @@ const userData = {
         }
     });
 });
+
+/* --- 5. LOGIN AUTHENTICATION --- */
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form');
+
+    if (loginForm) {
+        console.log("Login Script Loaded"); // This will show in Console (F12) if it works
+
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); 
+
+            const emailInput = document.getElementById('login-email');
+            const passwordInput = document.getElementById('login-password');
+            const errorMsg = document.getElementById('login-error');
+            const submitBtn = loginForm.querySelector('.btn-login');
+
+            // Reset Error
+            errorMsg.style.display = 'none';
+            errorMsg.innerText = '';
+
+            const email = emailInput.value.trim().toLowerCase();
+            const password = passwordInput.value;
+
+            // Database Info
+            const dbUrl = 'https://contielleprisca-ad78.restdb.io/rest/app-users';
+            const apiKey = '698cb182bf4bcc683253e4c3';
+
+            // Loading State
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Checking...';
+            submitBtn.disabled = true;
+
+            try {
+                // Query Database
+                const query = `?q={"email": "${email}"}`;
+                const response = await fetch(dbUrl + query, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-apikey': apiKey,
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+
+                const users = await response.json();
+
+                if (users.length === 0) {
+                    errorMsg.innerText = 'Account not found. Please register.';
+                    errorMsg.style.display = 'block';
+                } else {
+                    const user = users[0];
+                    if (user.password === password) {
+                        // Success!
+                        window.location.href = 'index.html';
+                    } else {
+                        errorMsg.innerText = 'Incorrect password.';
+                        errorMsg.style.display = 'block';
+                    }
+                }
+
+            } catch (error) {
+                console.error(error);
+                errorMsg.innerText = 'Connection Error.';
+                errorMsg.style.display = 'block';
+            } finally {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+});

@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Contielle Prisca</title>
+    
     <link rel="stylesheet" href="../CSS/style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="../Javascript/script.js" defer></script>
 </head>
 <body class="auth-body">
 
@@ -16,31 +20,24 @@
             <h1 class="auth-title">LOGIN</h1>
         </div>
 
-        <form onsubmit="event.preventDefault(); window.location.href='index.html';">
+        <form id="login-form">
             <div class="form-group">
-                <input type="text" class="form-input" placeholder="Sign In (Email or Phone)" required>
+                <input type="email" class="form-input" id="login-email" placeholder="Email Address" required>
             </div>
             
-            <div class="form-group">
-                <div class="input-group-row">
-                    <select class="form-input input-prefix">
-                        <option>SG (+65)</option>
-                        <option>US (+1)</option>
-                        <option>UK (+44)</option>
-                    </select>
-                    <input type="text" class="form-input input-mobile" placeholder="Mobile Number">
-                </div>
-            </div>
+            
 
             <div class="form-group">
-                <input type="password" class="form-input" placeholder="Password" required>
+                <input type="password" class="form-input" id="login-password" placeholder="Password" required>
             </div>
+
+            <p id="login-error" style="color: #ff4d4d; font-size: 0.9rem; margin-bottom: 1rem; display: none; text-align: center; font-weight: bold;"></p>
 
             <button type="submit" class="btn-login">Login</button>
             
-            <a href="#" class="forgot-password">Forgot Password?</a>
+            
         </form>
-
+<div class="divider">        </div>
         <div class="divider">OR</div>
 
         <div class="social-login">
