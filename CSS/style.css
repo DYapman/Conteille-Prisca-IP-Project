@@ -1137,3 +1137,192 @@ header {
         border: 1px solid #eee;
     }
 }
+
+/* =========================================================
+   RANK PAGE STYLES
+   ========================================================= */
+
+/* Dark Theme Overrides for Rank Page */
+.rank-body {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.rank-page-container {
+    background-color: #000000;
+    padding-bottom: 60px;
+}
+
+/* Header Section */
+.rank-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+}
+
+.rank-icon-wrapper {
+    margin-bottom: 30px; /* Increased margin for better spacing */
+    display: flex;
+    justify-content: center;
+}
+
+/* NEW: Style for the GIF - MADE BIGGER */
+.rank-header-gif {
+    width: 350px;       /* Increased from 150px to 350px */
+    max-width: 100%;    /* Ensures it doesn't overflow on mobile */
+    height: auto;
+    object-fit: contain;
+}
+
+.rank-main-title {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.rank-divider {
+    width: 60%;
+    max-width: 300px;
+    height: 1px;
+    background-color: #555;
+    margin: 0 auto 60px;
+}
+
+/* Rank Cards */
+.ranks-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding: 0 20px;
+}
+
+.rank-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.rank-badge-img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.1));
+}
+
+.rank-info-col {
+    max-width: 500px;
+}
+
+.rank-name {
+    font-family: var(--font-sans);
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* Specific Colors for Rank Names */
+.lapis-text { color: #4169E1; }
+.jade-text { color: #50C878; }
+.ruby-text { color: #E0115F; }
+.citrine-text { color: #DAA520; }
+
+.rank-points {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 25px;
+}
+
+.rank-perks {
+    list-style: none;
+    text-align: left;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.rank-perks li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.rank-perks li::before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Earn Points Section */
+.earn-points-section {
+    margin-top: 100px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.earn-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.earn-list {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.earn-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.earn-action {
+    font-weight: 300;
+}
+
+.earn-value {
+    color: #fff;
+    font-weight: 400;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    .rank-card {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 50px;
+        text-align: left;
+    }
+
+    .rank-badge-col {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .rank-info-col {
+        flex: 1.5;
+        padding-top: 20px;
+    }
+
+    .rank-badge-img {
+        margin-bottom: 0;
+        width: 250px;
+    }
+}
