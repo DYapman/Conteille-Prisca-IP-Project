@@ -269,7 +269,10 @@ header {
 }
 
 /* Content Sections (Zig-Zag Layout) */
-.club-section { display: flex; flex-direction: column; }
+.club-section { 
+    display: flex; 
+    flex-direction: column; 
+    background-color: var(--primary-color); }
 .club-block { display: flex; flex-direction: column; }
 .club-img-container { width: 100%; height: 400px; }
 .club-img-container img { width: 100%; height: 100%; object-fit: cover; }
@@ -1326,4 +1329,15 @@ header {
         margin-bottom: 0;
         width: 250px;
     }
+}
+
+/* --- FIX FOR RANK PAGE HEADER --- */
+/* Force header and menu text to be black, even on the dark Rank page */
+.rank-body header, 
+.rank-body .overlay {
+    color: var(--text-color); /* Sets text back to dark grey/black */
+}
+
+.rank-body .menu-list li {
+    color: var(--text-color);
 }
