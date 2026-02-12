@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Contielle Prisca</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="payment-body">
+
+    <div class="payment-wrapper">
+        
+        <header class="payment-header">
+            <a href="index.html" class="header-logo-link">
+                <img src="../Photos/LogoForCP.png" alt="Contielle Prisca" class="payment-logo-img">
+            </a>
+            <h1 class="payment-page-title">Payment</h1>
+            <div class="header-bag-icon">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+        </header>
+
+        <form class="checkout-layout">
+            
+            <div class="checkout-main">
+                
+                <button type="button" class="gpay-btn">
+                    <i class="fab fa-google"></i> Pay
+                </button>
+
+                <div class="payment-divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="form-section-title">Contact</h3>
+                    <input type="email" placeholder="Email" class="pay-input">
+                </div>
+
+                <div class="form-section">
+                    <h3 class="form-section-title">Delivery</h3>
+                    <div class="form-row">
+                        <input type="text" placeholder="First Name" class="pay-input half-width">
+                        <input type="text" placeholder="Last Name" class="pay-input half-width">
+                    </div>
+                    <input type="text" placeholder="Address" class="pay-input">
+                    <div class="form-row">
+                        <input type="text" placeholder="Postal Code" class="pay-input half-width">
+                        <input type="tel" placeholder="Phone" class="pay-input half-width">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="form-section-title">Payment</h3>
+                    <input type="text" placeholder="Card Number" class="pay-input">
+                    <div class="form-row">
+                        <input type="text" placeholder="Expiration Date (MM / YY)" class="pay-input half-width">
+                        <input type="text" placeholder="Security Code" class="pay-input half-width">
+                    </div>
+                    <input type="text" placeholder="Name on Card" class="pay-input">
+                </div>
+            </div>
+
+            <div class="checkout-sidebar">
+                <div class="summary-card">
+                    <h3 class="form-section-title">Order Summary</h3>
+                    
+                    <div class="summary-item-preview">
+                        <div class="item-name">Sea Mariner NATO</div>
+                        <div class="item-price">S$660</div>
+                    </div>
+                    <hr class="summary-divider">
+
+                    <div class="summary-row">
+                        <span class="summary-label">Subtotal</span>
+                        <span class="summary-value">S$660.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Shipping</span>
+                        <span class="summary-value">Free</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span class="summary-label">Total</span>
+                        <span class="summary-total">S$660.00</span>
+                    </div>
+                    
+                    <button type="submit" class="pay-submit-btn">Pay S$660.00</button>
+                    
+                    <div class="secure-badge">
+                        <i class="fas fa-lock"></i> Secure SSL Encryption
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="../Javascript/script.js"></script>
+</body>
+</html>
