@@ -400,7 +400,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = document.querySelector('.product-title').innerText;
             const priceText = document.querySelector('.price').innerText; 
             const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
-            const img = document.querySelector('.product-images img').src;
+            
+            // --- UPDATED FIX FOR 3D MODEL PAGES ---
+            const imgEl = document.querySelector('.product-images img');
+            let img;
+            
+            if (imgEl) {
+                // Use existing image if available (standard pages)
+                img = imgEl.src;
+            } else {
+                // Logic for 3D Pages (Fallbacks)
+                if (title.includes('Novus Flux')) {
+                    img = '../Photos/novusfluxCart.png';
+                } else if (title.includes('Sea Mariner')) {
+                    // UPDATED: Now points to seamarinerCart.png
+                    img = '../Photos/seamarinerCart.png';
+                } else {
+                    // Generic fallback just in case
+                    img = 'https://via.placeholder.com/150';
+                }
+            }
+
             addItemToCart({ name: title, price: price, img: img });
         });
     }

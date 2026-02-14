@@ -180,6 +180,26 @@ header {
 .price { font-family: var(--font-serif); font-size: 1.2rem; color: #555; margin-bottom: 20px; }
 .origin-divider { text-align: center; margin: 30px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 15px; font-size: 0.8rem; color: #888; text-transform: uppercase; }
 
+/* --- 3D Model Integration --- */
+.sketchfab-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Keeps it a perfect square (1:1 ratio) */
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.sketchfab-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+/* ---------------------------- */
+
 /* Accordion */
 .accordion-item { border-bottom: 1px solid #eee; }
 .accordion-header { padding: 15px 20px; display: flex; justify-content: space-between; font-weight: 500; cursor: pointer; }
