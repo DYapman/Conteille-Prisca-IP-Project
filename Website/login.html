@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Contielle Prisca</title>
+    
+    <link rel="stylesheet" href="../CSS/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="../Javascript/script.js" defer></script>
+</head>
+<body class="auth-body">
+
+    <div class="auth-card">
+        <div class="auth-logo" onclick="window.location.href='index.html'" title="Return Home"></div>
+
+        <div class="auth-header">
+            <h1 class="auth-title">LOGIN</h1>
+        </div>
+
+        <form id="login-form">
+            <div class="form-group">
+                <input type="email" class="form-input" id="login-email" placeholder="Email Address" required>
+            </div>
+            
+            
+
+            <div class="form-group">
+                <input type="password" class="form-input" id="login-password" placeholder="Password" required>
+            </div>
+
+            <p id="login-error" style="color: #ff4d4d; font-size: 0.9rem; margin-bottom: 1rem; display: none; text-align: center; font-weight: bold;"></p>
+
+            <button type="submit" class="btn-login">Login</button>
+            
+            
+        </form>
+        <div class="divider">        </div>
+        <div class="divider">OR</div>
+        <div class="divider">        </div>
+
+        <div class="social-login">
+            <i class="fab fa-apple social-icon"></i>
+            <i class="fab fa-facebook social-icon"></i>
+            <i class="fab fa-google social-icon"></i>
+            <i class="fab fa-windows social-icon"></i>
+        </div>
+
+        <p class="text-sm">
+            Don't have an account? <a href="registration.html" class="text-primary-bold">Sign Up</a>
+        </p>
+    </div>
+
+</body>
+</html>
