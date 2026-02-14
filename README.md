@@ -87,7 +87,6 @@ Automated Post Generation: A custom system that generates and displays forum pos
 ## Assistive AI
 
 Assistive AI
-AI tools (Gemini and ChatGPT) were used as collaborative partners to solve technical hurdles and ensure design consistency:
 
 Sketchfab Implementation: AI was used to troubleshoot the integration of the Sketchfab API, ensuring the 3D models loaded efficiently.
 
@@ -98,7 +97,8 @@ Profile Page Architecture: AI helped structure the Tab logic for the user profil
 Forum Post Generation: Used AI to develop the logic for generating and displaying community forum posts dynamically.
 
 
-![sample img](readme_img/sample.JPG)
+![alt text](<ReadMe Photo/Screenshot 2026-02-15 002844.png>)
+![alt text](<ReadMe Photo/Screenshot 2026-02-15 003330.png>)
 
 ## Testing
 
@@ -164,16 +164,3 @@ https://tenor.com
 
 
 
-
-
-Credits
-Content
-All brand copy and "Contielle Prisca" storytelling are original concepts.
-
-Media
-3D Models sourced/inspired by the public archives of Omega and Rolex via Sketchfab.
-
-Images and icons sourced from high-quality royalty-free repositories.
-
-Acknowledgements
-Special thanks to the watch community for providing insights into the "Submariner/Seamaster" aesthetic preferences.
