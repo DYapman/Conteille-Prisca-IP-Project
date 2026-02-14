@@ -619,7 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="badge-info">
                     <div class="badge-title">${badge.name}</div>
-                    <div class="badge-desc">Awarded for community contribution</div>
+                    <div class="badge-desc"></div>
                 </div>
             `;
             fullContainer.appendChild(fullDiv);
