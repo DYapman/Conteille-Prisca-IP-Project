@@ -120,23 +120,28 @@ For any scenarios that have not been automated, test the user stories manually a
 
      1. Verified that the Sketchfab model is responsive to touch and mouse drag on all tested browsers.
 
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
-
 ## Credits
 
 ### Content
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
+- The text for technical features for the watches was copied from the [Omega](https://www.omegawatches.com/watch-omega-seamaster-planet-ocean-6000m-co-axial-master-chronometer-45-5-mm-21592462101001)
 
 ### Media
-- The photos used in this site were obtained from ...
+- The photos used in this site were obtained from :
+
+https://singaporewatchclub.com
+https://www.zuludiver.com/collections/waterproof-rubber-watch-straps
+https://gemini.google.com
+https://tenor.com
 
 ### Acknowledgements
 
-- I received inspiration for this project from X
+- I received inspiration for this project from:
+
+- Omega
+- Ralf Watches
+- Bell & Ross
+- Rolex
+- IWC
 
 
 
