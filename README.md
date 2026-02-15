@@ -3,6 +3,9 @@
 - Contielle Prisca is a high-class luxury watch brand built for the modern age. This project is an e-commerce direct to consumer platform designed to bridge the gap between traditional horological prestige and modern accessibility. The brand identity is rooted in a "Best of Both Worlds" philosophy, merging the rugged, elegant spirit of the diver watches with the modern digital watches.
 
 - Our mission is to provide an elite digital boutique experience where craftsmanship meets convenience. Every element of the site, from the minimalist typography to the seamless navigation, is engineered to reflect the precision of the timepieces themselves. Contielle Prisca isn't just selling a watch; it is offering a membership into a lifestyle of timeless sophistication and modern performance.
+
+- Github pages link
+- https://dyapman.github.io/Conteille-Prisca-IP-Project/
  
 ## Design Process
 
