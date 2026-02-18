@@ -39,16 +39,15 @@ Hero Experience: A high-impact visual introduction to the brand’s "Seamaster-S
 Responsive Navigation: A luxury-tier header that adapts seamlessly from a desktop "Mega-Menu" to a sleek mobile "Hamburger" menu.
 
 2. Membership Page (membership.html)
-The "Inner Circle" Enrollment: A dedicated portal for users to join the exclusive Contielle Prisca membership program.
+The "Inner Circle" Enrollment: A dedicated portal for users to view the exclusive Contielle Prisca membership program.
 
-Intelligent Form Validation: Custom JavaScript logic that ensures user data is correct before submission, providing real-time feedback.
 
 Exclusive Benefits Showcase: A section detailing the perks of membership, such as early access to limited edition drops.
 
 3. Login & Authentication (login.html)
 Boutique Gateway: A minimalist, high-security aesthetic login interface designed to feel like entering a private showroom.
 
-Session-Ready Architecture: Structured to handle user authentication for returning collectors.
+Session-Ready Architecture: Structured to handle user authentication for returning collectors using RestDB to store the data of users
 
 4. Accessories Gallery (accessories.html)
 Precision Real-Time Clock: A live, functional digital clock integrated into the UI to symbolize the brand’s obsession with timing and precision.
