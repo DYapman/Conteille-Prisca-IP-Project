@@ -50,7 +50,7 @@ Boutique Gateway: A minimalist, high-security aesthetic login interface designed
 Session-Ready Architecture: Structured to handle user authentication for returning collectors using RestDB to store the data of users
 
 4. Accessories Gallery (accessories.html)
-Precision Real-Time Clock: A live, functional digital clock integrated into the UI to symbolize the brand’s obsession with timing and precision.
+Precision Real-Time Clock: A live, functional digital countdown integrated into the UI to symbolize the brand’s updated shop for accessories
 
 Curated Product Grid: A clean, CSS Grid-powered gallery showcasing bespoke straps, maintenance kits, and premium watch winders.
 
@@ -59,7 +59,6 @@ Hover-Interactive Elements: Visual feedback on product cards to maintain an enga
 5. User Profile Page
 Dynamic Tab System: A "Single Page Application" feel that allows users to toggle between Account Settings, Order History, and Digital Ranking without reloading the page.
 
-Collection Registry: A dedicated space for members to view the specifications and serial numbers of their owned timepieces.
 
 6. Community Forum
 Automated Post Generation: A custom system that generates and displays forum posts, creating a "living" community of watch enthusiasts.
